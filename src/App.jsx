@@ -1,12 +1,13 @@
 import Sidebar from "./sections/Sidebar";
 import Footer from "./sections/Footer";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SplitPane, { Pane } from "split-pane-react";
+import CarretBlackIcon from "./icons/carretBlack.svg";
 import "split-pane-react/esm/themes/default.css";
 import "./index.css";
 
 function App() {
-  const [chatToggle, setChatToggle] = useState("100%");
+  const [chatToggle, setChatToggle] = useState("75%");
   const [sizes, setSizes] = useState([chatToggle, "auto"]);
 
   const layoutCSS = {
@@ -16,16 +17,27 @@ function App() {
     justifyContent: "center",
   };
 
+  useEffect(() => {
+    setSizes([chatToggle, "auto"]);
+  }, [chatToggle]);
+
   const handleChatToggle = (e) => {
     e.preventDefault();
-    setChatToggle('80%');
-  }
+    setChatToggle("75%");
+    console.log(sizes);
+  };
+
+  const handleChatToggleOff = (e) => {
+    e.preventDefault();
+    setChatToggle("100%");
+    console.log(chatToggle);
+  };
   return (
     <div style={{ height: "100vh" }}>
       <SplitPane split="vertical" sizes={sizes} onChange={setSizes}>
-        <Pane minSize={"50%"} maxSize="80%">
+        <Pane minSize={"50%"} maxSize={'95%'}>
           <div style={{ ...layoutCSS, background: "#1A1A1A" }}>pane1</div>
-          <Footer />
+          <Footer handleChatToggle={handleChatToggle} />
         </Pane>
         <div style={{ ...layoutCSS, background: "#d5d7d9" }}>
           <div
@@ -36,7 +48,9 @@ function App() {
               border: "1px solid black",
             }}
           >
-            <button>x</button>
+            <button onClick={handleChatToggleOff} className="close-chat-btn">
+              x
+            </button>
             <Sidebar />
           </div>
         </div>

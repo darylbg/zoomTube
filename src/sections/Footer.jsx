@@ -13,7 +13,7 @@ import ShareScreenIcon from "../icons/shareScreen.svg";
 import WhiteboardsIcon from "../icons/whiteboards.svg";
 import CarretIcon from "../icons/carret.svg";
 
-function Footer() {
+function Footer({handleChatToggle}) {
   return (
     <footer className="footer">
       <div className="footer-icons">
@@ -33,6 +33,13 @@ function Footer() {
         </div>
       </div>
       <div className="footer-icons">
+      <div>
+          <div>
+            <img src={SecurityIcon}></img>
+          </div>
+
+          <p>Security</p>
+        </div>
         <div>
           <div>
             <img src={ParticipantsIcon}></img>
@@ -47,7 +54,9 @@ function Footer() {
           <img className="footer-micOff-carretIcon" src={CarretIcon}></img>
           <p>Share Screen</p>
         </div>
-        <div>
+        <div
+            onClick={handleChatToggle}
+        >
           <div>
             <img src={ChatIcon}></img>
           </div>

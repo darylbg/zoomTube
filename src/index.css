@@ -6,6 +6,19 @@ body {
   overflow: hidden;
 }
 
+/* chat */
+
+.close-chat-btn {
+  background-color: transparent;
+  border: none;
+}
+
+.close-chat-btn img {
+  rotate: 180deg;
+}
+
+/* footer */
+
 .footer {
   height: 52px;
   z-index: 1;
@@ -25,13 +38,20 @@ body {
 
 .footer-icons div {
   padding: 0 15px;
+  margin: 1px 0 3px 0;
   position: relative;
+  border-radius: 8px;
+}
+
+.footer-icons div:hover {
+  background-color: #1A1A1A;
+  cursor: pointer;
 }
 
 .footer-icons div div {
   display: flex;
   justify-content: center;
-  margin-top: 5px;
+  margin-top: 3px;
 }
 
 .footer-icons div p {
@@ -54,7 +74,7 @@ body {
 }
 
 .leave-button {
-  background-color: red;
+  background-color: #e02828;
   border: none;
   color: #fff;
   cursor: pointer;
@@ -64,4 +84,8 @@ body {
   border-radius: 10px;
   padding: 0 18px;
   margin-right: 16px;
+}
+
+.leave-button:hover {
+  background-color: red;
 }
