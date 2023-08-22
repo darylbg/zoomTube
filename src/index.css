@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.footer {
+  height: 52px;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+  background-color: #040404;
+  width: 100%;
+  display: flex !important;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.footer-icons {
+  display: flex;
+}
+
+.footer-icons div {
+  padding: 0 15px;
+  position: relative;
+}
+
+.footer-icons div div {
+  display: flex;
+  justify-content: center;
+  margin-top: 5px;
+}
+
+.footer-icons div p {
+  font-size: 12px;
+  color: #A0A0A0;
+  display: flex;
+    justify-content: center;
+}
+
+.footer-right-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer-micOff-carretIcon{
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.leave-button {
+  background-color: red;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 700;
+  height: 28px;
+  border-radius: 10px;
+  padding: 0 18px;
+  margin-right: 16px;
+}
