@@ -12,6 +12,7 @@ import SettingsIcon from "../icons/settings.svg";
 import ShareScreenIcon from "../icons/shareScreen.svg";
 import WhiteboardsIcon from "../icons/whiteboards.svg";
 import CarretIcon from "../icons/carret.svg";
+import CarretGreenIcon from "../icons/carretGreen.svg";
 
 function Footer({handleChatToggle}) {
   return (
@@ -51,8 +52,8 @@ function Footer({handleChatToggle}) {
           <div>
             <img src={ShareScreenIcon}></img>
           </div>
-          <img className="footer-micOff-carretIcon" src={CarretIcon}></img>
-          <p>Share Screen</p>
+          <img className="footer-micOff-carretIcon" src={CarretGreenIcon}></img>
+          <p style={{color: '#28E567'}}>Share Screen</p>
         </div>
         <div
             onClick={handleChatToggle}

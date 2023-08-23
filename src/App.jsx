@@ -14,7 +14,7 @@ function App() {
     height: "100%",
     display: "flex",
     alignItems: "center",
-    justifyContent: "center",
+    justifyContent: "space-between",
   };
 
   useEffect(() => {
@@ -36,7 +36,10 @@ function App() {
     <div style={{ height: "100vh" }}>
       <SplitPane split="vertical" sizes={sizes} onChange={setSizes}>
         <Pane minSize={"50%"} maxSize={'95%'}>
-          <div style={{ ...layoutCSS, background: "#1A1A1A" }}>pane1</div>
+          <div style={{ ...layoutCSS, background: "#1A1A1A" }}>
+            <div className="left-view">left view</div>
+            <div className="right-view">right view</div>
+          </div>
           <Footer handleChatToggle={handleChatToggle} />
         </Pane>
         <div style={{ ...layoutCSS, background: "#d5d7d9" }}>

@@ -6,6 +6,16 @@ body {
   overflow: hidden;
 }
 
+/* views */
+
+.left-view,
+.right-view {
+  flex: 1;
+  background-color: #A0A0A0;
+  aspect-ratio: 16/9;
+  margin: 0 3px;
+}
+
 /* chat */
 
 .close-chat-btn {
