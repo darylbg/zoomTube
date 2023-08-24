@@ -1,4 +1,4 @@
-import Sidebar from "./sections/Sidebar";
+import Chat from "./sections/Chat";
 import Footer from "./sections/Footer";
 import React, { useState, useEffect } from "react";
 import SplitPane, { Pane } from "split-pane-react";
@@ -54,7 +54,7 @@ function App() {
             <button onClick={handleChatToggleOff} className="close-chat-btn">
               x
             </button>
-            <Sidebar />
+            <Chat />
           </div>
         </div>
       </SplitPane>
