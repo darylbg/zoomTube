@@ -2,7 +2,7 @@ import Chat from "./sections/Chat";
 import Footer from "./sections/Footer";
 import React, { useState, useEffect } from "react";
 import SplitPane, { Pane } from "split-pane-react";
-import CarretBlackIcon from "./icons/carretBlack.svg";
+import Webcam from "react-webcam";
 import "split-pane-react/esm/themes/default.css";
 import "./index.css";
 
@@ -38,7 +38,7 @@ function App() {
         <Pane minSize={"50%"} maxSize={'95%'}>
           <div style={{ ...layoutCSS, background: "#1A1A1A" }}>
             <div className="left-view">left view</div>
-            <div className="right-view">right view</div>
+            <div className="right-view"><Webcam style={{minWidth: '100%'}}/></div>
           </div>
           <Footer handleChatToggle={handleChatToggle} />
         </Pane>
