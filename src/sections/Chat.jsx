@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import PlayButtonImg from '../assets/images/play-button-icon-png-18919.png'
 import { Youtube } from "feather-icons-react/build/IconComponents";
 
-function Chat() {
+function Chat({handleSelectedVideo}) {
   const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -34,7 +34,7 @@ function Chat() {
     }
   }, [searchInput]);
 
-  // console.log(searchResults[0].snippet.thumbnails.default.url)
+  console.log(searchResults)
 
   const handleDateFormat = (date) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
@@ -60,8 +60,7 @@ function Chat() {
         <ul className="search-results">
           {searchResults &&
             searchResults.map((result) => (
-              <li key={result.id.videoId}>
-                <div className="search-results-wrapper">
+              <li key={result.id.videoId} data-id={result.id.videoId} onClick={handleSelectedVideo}>
                   <div className="search-results-img">
                     <img className="img-1" src={result.snippet.thumbnails.default.url}></img>
                     <img className="img-2" src={PlayButtonImg}></img>
@@ -76,7 +75,6 @@ function Chat() {
                       <p>{handleDateFormat(result.snippet.publishedAt)}</p>
                     </div>
                   </div>
-                </div>
               </li>
             ))}
         </ul>

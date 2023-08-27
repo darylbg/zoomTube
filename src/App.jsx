@@ -3,6 +3,7 @@ import Footer from "./sections/Footer";
 import React, { useState, useEffect } from "react";
 import SplitPane, { Pane } from "split-pane-react";
 import Webcam from "react-webcam";
+import YoutubeEmbedVideo from "youtube-embed-video";
 import "split-pane-react/esm/themes/default.css";
 import "./index.css";
 
@@ -10,6 +11,7 @@ function App() {
   const [chatToggle, setChatToggle] = useState("75%");
   const [sizes, setSizes] = useState([chatToggle, "auto"]);
   const [myName, setMyName] = useState('');
+  const [videoId, setVideoId] = useState('')
 
   const layoutCSS = {
     height: "100%",
@@ -33,12 +35,21 @@ function App() {
     setChatToggle("100%");
     console.log(chatToggle);
   };
+
+  const handleSelectedVideo = (e) => {
+    e.preventDefault();
+    const selectedId = e.currentTarget.getAttribute('data-id');
+    setVideoId(selectedId);
+  }
+
   return (
     <div style={{ height: "100vh" }}>
       <SplitPane split="vertical" sizes={sizes} onChange={setSizes}>
         <Pane minSize={"50%"} maxSize={"95%"}>
-          <div style={{ ...layoutCSS, background: "#1A1A1A" }}>
-            <div className="left-view">left view</div>
+          <div style={{ ...layoutCSS }}>
+            <div className="video-view">
+            <YoutubeEmbedVideo videoId={videoId} suggestions={false} />
+            </div>
             <div className="right-view">
               <Webcam style={{ width: "100%" }} />
             </div>
@@ -57,7 +68,7 @@ function App() {
             <button onClick={handleChatToggleOff} className="close-chat-btn">
               x
             </button>
-            <Chat />
+            <Chat handleSelectedVideo={handleSelectedVideo}/>
           </div>
         </div>
       </SplitPane>

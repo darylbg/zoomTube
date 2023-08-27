@@ -8,13 +8,18 @@ body {
 
 /* views */
 
-.left-view,
+.video-view,
 .right-view {
   flex: 1;
   background-color: #A0A0A0;
   aspect-ratio: 16/9;
   margin: 0 3px;
   overflow: hidden;
+}
+
+.video-view iframe {
+  height: 100%;
+  width: 100%;
 }
 
 /* chat */
@@ -41,13 +46,9 @@ body {
 .search-results li {
   list-style-type: none;
   margin: 10px 0;
-}
-
-.search-results-wrapper {
   display: flex;
   height: 105px;
   cursor: pointer;
-  /* position: relative; */
 }
 
 .search-results-img {
