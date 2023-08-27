@@ -3,7 +3,7 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 /* views */
@@ -19,6 +19,10 @@ body {
 
 /* chat */
 
+.chat {
+  padding: 10px;
+}
+
 .close-chat-btn {
   background-color: transparent;
   border: none;
@@ -26,6 +30,61 @@ body {
 
 .close-chat-btn img {
   rotate: 180deg;
+}
+
+/* search results */
+
+.search-results {
+  padding: 0;
+}
+
+.search-results li {
+  list-style-type: none;
+  margin: 10px 0;
+}
+
+.search-results-wrapper {
+  display: flex;
+  height: 105px;
+  cursor: pointer;
+  /* position: relative; */
+}
+
+.search-results-img {
+  flex: 0 0 auto;
+  position: relative;
+}
+
+.search-results-img .img-1 {
+  height: 100%;
+  
+}
+
+.search-results-img .img-2 {
+  position: absolute;
+  height: 50px;
+  top: 25%;
+
+  left: 32%;
+}
+
+.search-results-text {
+  flex: 1;
+  padding-left: 10px;
+}
+
+.search-results-text div {
+  height: 50%;
+  overflow: hidden;
+}
+
+.search-results-text div p {
+  margin: 0;
+}
+
+.search-results-text-body p {
+  text-wrap: nowrap;
+  overflow: hidden;
 }
 
 /* footer */
@@ -70,6 +129,7 @@ body {
   color: #A0A0A0;
   display: flex;
     justify-content: center;
+    text-wrap: nowrap;
 }
 
 .footer-right-icons {

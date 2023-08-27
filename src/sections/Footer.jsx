@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import MicOnIcon from "../icons/micOn.svg";
-import MicOffIcon from "../icons/micOff.svg";
-import VideoOffIcon from "../icons/videoOff.svg";
-import VideoOnIcon from "../icons/videoOn.svg";
-import ChatIcon from "../icons/chat.svg";
-import MoreIcon from "../icons/more.svg";
-import ParticipantsIcon from "../icons/participants.svg";
-import ReactionsIcon from "../icons/reactions.svg";
-import SecurityIcon from "../icons/security.svg";
-import SettingsIcon from "../icons/settings.svg";
-import ShareScreenIcon from "../icons/shareScreen.svg";
-import WhiteboardsIcon from "../icons/whiteboards.svg";
-import CarretIcon from "../icons/carret.svg";
-import CarretGreenIcon from "../icons/carretGreen.svg";
+import MicOnIcon from "../assets/icons/micOn.svg";
+import MicOffIcon from "../assets/icons/micOff.svg";
+import VideoOffIcon from "../assets/icons/videoOff.svg";
+import VideoOnIcon from "../assets/icons/videoOn.svg";
+import ChatIcon from "../assets/icons/chat.svg";
+import MoreIcon from "../assets/icons/more.svg";
+import ParticipantsIcon from "../assets/icons/participants.svg";
+import ReactionsIcon from "../assets/icons/reactions.svg";
+import SecurityIcon from "../assets/icons/security.svg";
+import SettingsIcon from "../assets/icons/settings.svg";
+import ShareScreenIcon from "../assets/icons/shareScreen.svg";
+import WhiteboardsIcon from "../assets/icons/whiteboards.svg";
+import CarretIcon from "../assets/icons/carret.svg";
+import CarretGreenIcon from "../assets/icons/carretGreen.svg";
 
 function Footer({handleChatToggle}) {
   return (
@@ -41,7 +41,8 @@ function Footer({handleChatToggle}) {
 
           <p>Security</p>
         </div>
-        <div>
+        <div
+        onClick={handleChatToggle}>
           <div>
             <img src={ParticipantsIcon}></img>
           </div>

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import PlayButtonImg from '../assets/images/play-button-icon-png-18919.png'
+import { Youtube } from "feather-icons-react/build/IconComponents";
 
 function Chat() {
   const [searchResults, setSearchResults] = useState([]);
@@ -15,7 +16,7 @@ function Chat() {
     if (searchInput !== "") {
       const apiKey = "AIzaSyCk_cO8UzS_H1vab6iGke7RSS0xJt1BAu8";
       const keyword = searchInput;
-      const maxResults = 10;
+      const maxResults = 20;
 
       const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${keyword}&type=video&maxResults=${maxResults}&key=${apiKey}`;
 
@@ -33,49 +34,53 @@ function Chat() {
     }
   }, [searchInput]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     const options = {
-  //       method: 'GET',
-  //       url: 'https://youtube-search-results.p.rapidapi.com/youtube-search/',
-  //       params: { q: 'justin+bieber' },
-  //       headers: {
-  //         'X-RapidAPI-Key': '1c2ee0c8b6mshadd74d1b6d62652p1cc7c1jsnfd786e944a0e',
-  //         'X-RapidAPI-Host': 'youtube-search-results.p.rapidapi.com'
-  //       }
-  //     };
+  // console.log(searchResults[0].snippet.thumbnails.default.url)
 
-  //     try {
-  //       const response = await axios.request(options);
-  //       console.log(response.data);
-  //     } catch (error) {
-  //       console.error(error);
-  //     }
-  //   };
-
-  //   fetchData();
-  // }, []);
+  const handleDateFormat = (date) => {
+    const options = { year: "numeric", month: "long", day: "numeric" };
+    return new Date(date).toLocaleDateString("en-US", options);
+  };
 
   return (
     <div className="chat">
-      <form onSubmit={handleSearchInput}>
-        <input
-          type="search"
-          value={inputValue}
-          placeholder="Search YouTube"
-          onChange={(e) => {
-            setInputValue(e.target.value);
-          }}
-        ></input>
-        <button type="submit">search</button>
-      </form>
-      <h3>Chat</h3>
-      <ul>
-        {searchResults &&
-          searchResults.map((result) => (
-            <li key={result.id.videoId}>{result.snippet.title}</li>
-          ))}
-      </ul>
+      <div>
+        <form onSubmit={handleSearchInput}>
+          <input
+            type="search"
+            value={inputValue}
+            placeholder="Search YouTube"
+            onChange={(e) => {
+              setInputValue(e.target.value);
+            }}
+          ></input>
+          <button type="submit">search</button>
+        </form>
+      </div>
+      <div>
+        <ul className="search-results">
+          {searchResults &&
+            searchResults.map((result) => (
+              <li key={result.id.videoId}>
+                <div className="search-results-wrapper">
+                  <div className="search-results-img">
+                    <img className="img-1" src={result.snippet.thumbnails.default.url}></img>
+                    <img className="img-2" src={PlayButtonImg}></img>
+                  </div>
+                  <div className="search-results-text">
+                    <div className="search-results-text-title">
+                      <p>{result.snippet.title}</p>
+                    </div>
+
+                    <div className="search-results-text-body">
+                      <p>{result.snippet.channelTitle}</p>
+                      <p>{handleDateFormat(result.snippet.publishedAt)}</p>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            ))}
+        </ul>
+      </div>
     </div>
   );
 }

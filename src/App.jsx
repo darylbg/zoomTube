@@ -9,6 +9,7 @@ import "./index.css";
 function App() {
   const [chatToggle, setChatToggle] = useState("75%");
   const [sizes, setSizes] = useState([chatToggle, "auto"]);
+  const [myName, setMyName] = useState('');
 
   const layoutCSS = {
     height: "100%",
@@ -35,10 +36,12 @@ function App() {
   return (
     <div style={{ height: "100vh" }}>
       <SplitPane split="vertical" sizes={sizes} onChange={setSizes}>
-        <Pane minSize={"50%"} maxSize={'95%'}>
+        <Pane minSize={"50%"} maxSize={"95%"}>
           <div style={{ ...layoutCSS, background: "#1A1A1A" }}>
             <div className="left-view">left view</div>
-            <div className="right-view"><Webcam style={{minWidth: '100%'}}/></div>
+            <div className="right-view">
+              <Webcam style={{ width: "100%" }} />
+            </div>
           </div>
           <Footer handleChatToggle={handleChatToggle} />
         </Pane>
