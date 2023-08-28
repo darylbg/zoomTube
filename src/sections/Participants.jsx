@@ -43,7 +43,7 @@ function Participants({handleSelectedVideo}) {
   };
 
   return (
-    <div className="chat">
+    <div className="participants-sidebar">
       <div>
         <form onSubmit={handleSearchInput}>
           <input

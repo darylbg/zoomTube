@@ -1,20 +1,21 @@
 import React, { useEffect, useState } from "react";
-const axios = require("axios");
+import axios from "axios";
 
 function Chat({ videoId }) {
+  const [comments, setComments] = useState([]);
+
   useEffect(() => {
     async function fetchVideoComments() {
-      const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY;
-      const youtubeVideoId = videoId;
+      const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY; // Replace with your API key
       const maxResults = 50; // You can adjust the number of results per page
 
       try {
         const response = await axios.get(
-          `https://www.googleapis.com/youtube/v3/commentThreads`,
+          "https://www.googleapis.com/youtube/v3/commentThreads",
           {
             params: {
               part: "snippet",
-              videoId: youtubeVideoId,
+              videoId: videoId,
               maxResults: maxResults,
               key: apiKey,
             },
@@ -28,15 +29,29 @@ function Chat({ videoId }) {
       }
     }
 
-    async function main() {
-      const comments = await fetchVideoComments();
-      console.log("Video comments:", comments);
+    async function fetchAndSetComments() {
+      const commentsData = await fetchVideoComments();
+      setComments(commentsData);
     }
 
-    main();
+    fetchAndSetComments();
   }, [videoId]);
-
-  return <div>chat</div>;
+  console.log(comments)
+  if (comments.length === 0) {
+    return <p>Video has no comments.</p>;
+  } else {
+    return (
+      <div className="chat-wrapper">
+        <ul className="chat-list">
+          {comments.map((comment) => (
+            <li key={comment.id}>
+              {comment.snippet.topLevelComment.snippet.textOriginal}
+            </li>
+          ))}
+        </ul>
+      </div>
+    );
+  }
 }
 
 export default Chat;

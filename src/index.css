@@ -70,17 +70,13 @@ body {
 
 /* chat */
 
-.chat {
+.participants-sidebar {
   padding: 10px;
 }
 
-.close-chat-btn {
+.close-sidebar-btn {
   background-color: transparent;
   border: none;
-}
-
-.close-chat-btn img {
-  rotate: 180deg;
 }
 
 /* search results */
@@ -132,6 +128,17 @@ body {
 .search-results-text-body p {
   text-wrap: nowrap;
   overflow: hidden;
+}
+
+/* chat */
+
+.chat-list {
+  padding: 0;
+}
+
+.chat-list li {
+list-style-type: none;
+border-bottom: 1px solid grey;
 }
 
 /* footer */

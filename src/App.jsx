@@ -56,6 +56,7 @@ function App() {
     setToggleVideoView(true);
     const selectedId = e.currentTarget.getAttribute("data-id");
     setVideoId(selectedId);
+    console.log(videoId)
   };
 
   const handleVideoViewHide = (e) => {
@@ -100,7 +101,7 @@ function App() {
               border: "1px solid black",
             }}
           >
-            <button onClick={handleSidebarToggleOff} className="close-chat-btn">
+            <button onClick={handleSidebarToggleOff} className="close-sidebar-btn">
               x
             </button>
             {sidebarContent === "chat" ? (
