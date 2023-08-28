@@ -14,7 +14,7 @@ import WhiteboardsIcon from "../assets/icons/whiteboards.svg";
 import CarretIcon from "../assets/icons/carret.svg";
 import CarretGreenIcon from "../assets/icons/carretGreen.svg";
 
-function Footer({handleChatToggle}) {
+function Footer({ handleSidebarToggle }) {
   return (
     <footer className="footer">
       <div className="footer-icons">
@@ -34,19 +34,17 @@ function Footer({handleChatToggle}) {
         </div>
       </div>
       <div className="footer-icons">
-      <div>
+        <div>
           <div>
             <img src={SecurityIcon}></img>
           </div>
 
           <p>Security</p>
         </div>
-        <div
-        onClick={handleChatToggle}>
+        <div onClick={handleSidebarToggle} data-name="participants">
           <div>
             <img src={ParticipantsIcon}></img>
           </div>
-
           <p>Participants</p>
         </div>
         <div>
@@ -54,11 +52,9 @@ function Footer({handleChatToggle}) {
             <img src={ShareScreenIcon}></img>
           </div>
           <img className="footer-micOff-carretIcon" src={CarretGreenIcon}></img>
-          <p style={{color: '#28E567'}}>Share Screen</p>
+          <p style={{ color: "#28E567" }}>Share Screen</p>
         </div>
-        <div
-            onClick={handleChatToggle}
-        >
+        <div onClick={handleSidebarToggle} data-name="chat">
           <div>
             <img src={ChatIcon}></img>
           </div>
