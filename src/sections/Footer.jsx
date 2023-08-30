@@ -14,7 +14,7 @@ import WhiteboardsIcon from "../assets/icons/whiteboards.svg";
 import CarretIcon from "../assets/icons/carret.svg";
 import CarretGreenIcon from "../assets/icons/carretGreen.svg";
 
-function Footer({ handleSidebarToggle }) {
+function Footer({ handleSidebarToggle, toggleWebcamHide, toggleWebcamVisible, isWebcamVisible }) {
   return (
     <footer className="footer">
       <div className="footer-icons">
@@ -26,9 +26,9 @@ function Footer({ handleSidebarToggle }) {
           <img className="footer-micOff-carretIcon" src={CarretIcon}></img>
           <p>Unmute</p>
         </div>
-        <div>
+        <div onClick={isWebcamVisible ? toggleWebcamHide : toggleWebcamVisible}>
           <div>
-            <img src={VideoOffIcon}></img>
+            <img src={isWebcamVisible ? VideoOnIcon : VideoOffIcon}></img>
           </div>
           <p>Start Video</p>
         </div>

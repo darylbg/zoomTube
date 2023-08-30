@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
-import PlayButtonImg from '../assets/images/play-button-icon-png-18919.png'
-import { Youtube } from "feather-icons-react/build/IconComponents";
+import PlayButtonImg from "../assets/images/play-button-icon-png-18919.png";
 
-function Participants({handleSelectedVideo}) {
+function Participants({ handleSelectedVideo, handleMyNameChange }) {
   const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -13,7 +12,7 @@ function Participants({handleSelectedVideo}) {
   };
 
   useEffect(() => {
-    const api_key = process.env.REACT_APP_YOUTUBE_API_KEY
+    const api_key = process.env.REACT_APP_YOUTUBE_API_KEY;
     if (searchInput !== "") {
       const apiKey = api_key;
       const keyword = searchInput;
@@ -35,8 +34,6 @@ function Participants({handleSelectedVideo}) {
     }
   }, [searchInput]);
 
-  // console.log(searchResults)
-
   const handleDateFormat = (date) => {
     const options = { year: "numeric", month: "long", day: "numeric" };
     return new Date(date).toLocaleDateString("en-US", options);
@@ -44,6 +41,18 @@ function Participants({handleSelectedVideo}) {
 
   return (
     <div className="participants-sidebar">
+      <div>
+        <form onSubmit={handleMyNameChange}>
+          <input
+            type="text"
+            value={''}
+            onChange={(e) => {
+              setInputValue(e.target.value);
+            }}
+          ></input>
+          <button type="submit">update</button>
+        </form>
+      </div>
       <div>
         <form onSubmit={handleSearchInput}>
           <input
@@ -61,21 +70,28 @@ function Participants({handleSelectedVideo}) {
         <ul className="search-results">
           {searchResults &&
             searchResults.map((result) => (
-              <li key={result.id.videoId} data-id={result.id.videoId} onClick={handleSelectedVideo}>
-                  <div className="search-results-img">
-                    <img className="img-1" src={result.snippet.thumbnails.default.url}></img>
-                    <img className="img-2" src={PlayButtonImg}></img>
+              <li
+                key={result.id.videoId}
+                data-id={result.id.videoId}
+                onClick={handleSelectedVideo}
+              >
+                <div className="search-results-img">
+                  <img
+                    className="img-1"
+                    src={result.snippet.thumbnails.default.url}
+                  ></img>
+                  <img className="img-2" src={PlayButtonImg}></img>
+                </div>
+                <div className="search-results-text">
+                  <div className="search-results-text-title">
+                    <p>{result.snippet.title}</p>
                   </div>
-                  <div className="search-results-text">
-                    <div className="search-results-text-title">
-                      <p>{result.snippet.title}</p>
-                    </div>
 
-                    <div className="search-results-text-body">
-                      <p>{result.snippet.channelTitle}</p>
-                      <p>{handleDateFormat(result.snippet.publishedAt)}</p>
-                    </div>
+                  <div className="search-results-text-body">
+                    <p>{result.snippet.channelTitle}</p>
+                    <p>{handleDateFormat(result.snippet.publishedAt)}</p>
                   </div>
+                </div>
               </li>
             ))}
         </ul>

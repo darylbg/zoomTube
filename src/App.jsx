@@ -19,6 +19,8 @@ function App() {
   const [videoId, setVideoId] = useState("");
   const [toggleVideoView, setToggleVideoView] = useState(false);
   const [viewWidth, setViewWidth] = useState(0);
+  const [isWebcamVisible, setIsWebcamVisible] = useState(false);
+  const [isVideoVisible, setIsVideoVisible] = useState(true);
 
   const viewRef = useRef(null);
 
@@ -56,11 +58,26 @@ function App() {
     setToggleVideoView(true);
     const selectedId = e.currentTarget.getAttribute("data-id");
     setVideoId(selectedId);
-    console.log(videoId)
+    console.log(videoId);
   };
 
   const handleVideoViewHide = (e) => {
+    e.preventDefault();
     setToggleVideoView(false);
+  };
+
+  const toggleWebcamHide = (e) => {
+    e.preventDefault();
+    setIsWebcamVisible(false);
+  };
+
+  const toggleWebcamVisible = (e) => {
+    e.preventDefault();
+    setIsWebcamVisible(true);
+  };
+
+  const handleMyNameChange = (e) => {
+    e.preventDefault();
   };
 
   return (
@@ -78,8 +95,11 @@ function App() {
                   <Dropdown.Item onClick={handleSidebarToggle}>
                     Rename
                   </Dropdown.Item>
-                  <Dropdown.Item onClick={handleVideoViewHide}>
+                  <Dropdown.Item>
                     Hide
+                  </Dropdown.Item>
+                  <Dropdown.Item onClick={handleVideoViewHide}>
+                    Remove
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
@@ -87,10 +107,19 @@ function App() {
             </div>
             <div className="right-view">
               <ViewMenu handleSidebarToggle={handleSidebarToggle} />
-              <Webcam style={{ width: "100%" }} />
+              {isWebcamVisible ? (
+                <Webcam style={{ width: "100%" }} />
+              ) : (
+                <p>this is hidden</p>
+              )}
             </div>
           </div>
-          <Footer handleSidebarToggle={handleSidebarToggle} />
+          <Footer
+            handleSidebarToggle={handleSidebarToggle}
+            toggleWebcamVisible={toggleWebcamVisible}
+            toggleWebcamHide={toggleWebcamHide}
+            isWebcamVisible={isWebcamVisible}
+          />
         </Pane>
         <div style={{ ...layoutCSS, background: "#d5d7d9" }}>
           <div
@@ -101,13 +130,19 @@ function App() {
               border: "1px solid black",
             }}
           >
-            <button onClick={handleSidebarToggleOff} className="close-sidebar-btn">
+            <button
+              onClick={handleSidebarToggleOff}
+              className="close-sidebar-btn"
+            >
               x
             </button>
             {sidebarContent === "chat" ? (
               <Chat videoId={videoId} />
             ) : (
-              <Participants handleSelectedVideo={handleSelectedVideo} />
+              <Participants
+                handleSelectedVideo={handleSelectedVideo}
+                handleMyNameChange={handleMyNameChange}
+              />
             )}
           </div>
         </div>
