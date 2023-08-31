@@ -4,6 +4,10 @@ body {
   height: 100vh;
   width: 100vw;
   overflow: hidden;
+  /* background-color: #111111; */
+}
+
+.split-pane-section {
   background-color: #111111;
 }
 
@@ -12,7 +16,7 @@ body {
 .video-view,
 .right-view {
   flex: 1;
-  background-color: #A0A0A0;
+  background-color: #1a1a1a;
   aspect-ratio: 16/9;
   margin: 0 3px;
   overflow: hidden;
@@ -60,15 +64,42 @@ body {
 }
 
 .view-menu-option a {
-  color: #D2D2D2;
-  border-top: 1px solid #D2D2D2;
-  border-bottom: 1px solid #D2D2D2;
+  color: #d2d2d2;
+  border-top: 1px solid #d2d2d2;
+  border-bottom: 1px solid #d2d2d2;
   font-size: 0.7em;
 }
 
 .view-menu-option a:hover {
   background-color: #444b53;
-  color: #D2D2D2;
+  color: #d2d2d2;
+}
+
+/* view mute label */
+
+.view-mute-label {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  background-color: #111111;
+  padding: 2px;
+}
+
+.view-mute-label svg {
+  color: #FF5C5C;
+  height: 14px;
+  -moz-transform: scale(-1, 1);
+  -webkit-transform: scale(-1, 1);
+  -o-transform: scale(-1, 1);
+  -ms-transform: scale(-1, 1);
+  transform: scale(-1, 1);
+}
+
+.view-mute-label p {
+  color: #d2d2d2;
+  font-size: 12px;
+  margin: 0 5px 0 0;
 }
 
 /* chat */
@@ -145,7 +176,6 @@ body {
 
 .search-results-img .img-1 {
   height: 100%;
-  
 }
 
 .search-results-img .img-2 {
@@ -182,8 +212,8 @@ body {
 }
 
 .chat-list li {
-list-style-type: none;
-border-bottom: 1px solid grey;
+  list-style-type: none;
+  border-bottom: 1px solid grey;
 }
 
 /* footer */
@@ -213,7 +243,7 @@ border-bottom: 1px solid grey;
 }
 
 .footer-icons div:hover {
-  background-color: #1A1A1A;
+  background-color: #1a1a1a;
 }
 
 .cursor-pointer {
@@ -228,10 +258,10 @@ border-bottom: 1px solid grey;
 
 .footer-icons div p {
   font-size: 12px;
-  color: #A0A0A0;
+  color: #a0a0a0;
   display: flex;
-    justify-content: center;
-    text-wrap: nowrap;
+  justify-content: center;
+  text-wrap: nowrap;
 }
 
 .footer-right-icons {
@@ -240,7 +270,7 @@ border-bottom: 1px solid grey;
   align-items: center;
 }
 
-.footer-micOff-carretIcon{
+.footer-micOff-carretIcon {
   position: absolute;
   top: 5px;
   right: 10px;

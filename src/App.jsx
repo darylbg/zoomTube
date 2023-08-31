@@ -6,8 +6,12 @@ import SplitPane, { Pane } from "split-pane-react";
 import Webcam from "react-webcam";
 import YoutubeEmbedVideo from "youtube-embed-video";
 import ViewMenu from "./components/ViewMenu";
+import MicOffComponent from "./components/MicOffComponent";
 import Dropdown from "react-bootstrap/Dropdown";
-import {MoreHorizontal} from "feather-icons-react/build/IconComponents";
+import {
+  MoreHorizontal,
+  MicOff,
+} from "feather-icons-react/build/IconComponents";
 import "split-pane-react/esm/themes/default.css";
 import "./index.css";
 
@@ -15,9 +19,9 @@ function App() {
   const [sidebarToggle, setSidebarToggle] = useState("75%");
   const [sidebarContent, setSidebarContent] = useState("");
   const [sizes, setSizes] = useState([sidebarToggle, "auto"]);
-  const [nameValue, setNameValue] = useState('me')
-  const [myName, setMyName] = useState('me');
-  const [videoName, setVideoName] = useState('Guest');
+  const [nameValue, setNameValue] = useState("me");
+  const [myName, setMyName] = useState("me");
+  const [videoName, setVideoName] = useState("Guest");
   const [videoId, setVideoId] = useState("");
   const [toggleVideoView, setToggleVideoView] = useState(false);
   const [viewWidth, setViewWidth] = useState(0);
@@ -59,7 +63,7 @@ function App() {
     setToggleVideoView(true);
     const selectedId = e.currentTarget.getAttribute("data-id");
     setVideoId(selectedId);
-    setIsVideoVisible(true)
+    setIsVideoVisible(true);
   };
 
   const handleVideoViewRemove = (e) => {
@@ -89,17 +93,22 @@ function App() {
 
   const handleMyNameChange = (e) => {
     e.preventDefault();
-    setMyName(nameValue)
+    setMyName(nameValue);
   };
 
   const handleClearNameInput = (e) => {
     e.preventDefault();
-    setNameValue('')
-  }
+    setNameValue("");
+  };
 
   return (
     <div style={{ height: "100vh" }}>
-      <SplitPane split="vertical" sizes={sizes} onChange={setSizes}>
+      <SplitPane
+        split="vertical"
+        sizes={sizes}
+        onChange={setSizes}
+        className="split-pane-section"
+      >
         <Pane minSize={"50%"} maxSize={"95%"}>
           <div style={{ ...layoutCSS }} ref={viewRef}>
             <div className={`video-view ${toggleVideoView ? "" : "d-none"}`}>
@@ -131,6 +140,10 @@ function App() {
               ) : (
                 <p>{videoName}</p>
               )}
+              <div className="view-mute-label">
+                <MicOff />
+                <p>{videoName}</p>
+              </div>
             </div>
             <div className="right-view">
               <ViewMenu handleSidebarToggle={handleSidebarToggle} />
@@ -139,6 +152,10 @@ function App() {
               ) : (
                 <p>{myName}</p>
               )}
+              <div className="view-mute-label">
+                <MicOff />
+                <p>{myName}</p>
+              </div>
             </div>
           </div>
           <Footer
