@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
+import {X, Check} from "feather-icons-react/build/IconComponents";
 import PlayButtonImg from "../assets/images/play-button-icon-png-18919.png";
 
-function Participants({ handleSelectedVideo, handleMyNameChange, myName, setMyName }) {
+function Participants({ handleSelectedVideo, handleMyNameChange, nameValue, setNameValue, handleClearNameInput }) {
   const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -42,19 +43,20 @@ function Participants({ handleSelectedVideo, handleMyNameChange, myName, setMyNa
   return (
     <div className="participants-sidebar">
       <div>
-        <form onSubmit={handleMyNameChange}>
+        <form className="name-change-form">
           <input
             type="text"
-            value={myName}
+            value={nameValue}
             onChange={(e) => {
-              setMyName(e.target.value);
+              setNameValue(e.target.value);
             }}
           ></input>
-          <button type="submit">update</button>
+          <X onClick={handleClearNameInput} className='name-change-x cursor-pointer' />
+          <Check onClick={handleMyNameChange} className='name-change-update cursor-pointer' />
         </form>
       </div>
       <div>
-        <form onSubmit={handleSearchInput}>
+        <form onSubmit={handleSearchInput} className="youtube-search-form">
           <input
             type="search"
             value={inputValue}
@@ -63,7 +65,7 @@ function Participants({ handleSelectedVideo, handleMyNameChange, myName, setMyNa
               setInputValue(e.target.value);
             }}
           ></input>
-          <button type="submit">search</button>
+          <button type="submit" className="video-search-btn">search</button>
         </form>
       </div>
       <div>

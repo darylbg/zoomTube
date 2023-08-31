@@ -7,7 +7,7 @@ import Webcam from "react-webcam";
 import YoutubeEmbedVideo from "youtube-embed-video";
 import ViewMenu from "./components/ViewMenu";
 import Dropdown from "react-bootstrap/Dropdown";
-import MoreHorizontal from "feather-icons-react/build/IconComponents/MoreHorizontal";
+import {MoreHorizontal} from "feather-icons-react/build/IconComponents";
 import "split-pane-react/esm/themes/default.css";
 import "./index.css";
 
@@ -15,7 +15,7 @@ function App() {
   const [sidebarToggle, setSidebarToggle] = useState("75%");
   const [sidebarContent, setSidebarContent] = useState("");
   const [sizes, setSizes] = useState([sidebarToggle, "auto"]);
-  const [value, setValue] = useState('me')
+  const [nameValue, setNameValue] = useState('me')
   const [myName, setMyName] = useState('me');
   const [videoName, setVideoName] = useState('Guest');
   const [videoId, setVideoId] = useState("");
@@ -59,7 +59,7 @@ function App() {
     setToggleVideoView(true);
     const selectedId = e.currentTarget.getAttribute("data-id");
     setVideoId(selectedId);
-    console.log(videoId);
+    setIsVideoVisible(true)
   };
 
   const handleVideoViewRemove = (e) => {
@@ -89,8 +89,13 @@ function App() {
 
   const handleMyNameChange = (e) => {
     e.preventDefault();
-    setMyName(e.target.value)
+    setMyName(nameValue)
   };
+
+  const handleClearNameInput = (e) => {
+    e.preventDefault();
+    setNameValue('')
+  }
 
   return (
     <div style={{ height: "100vh" }}>
@@ -164,8 +169,9 @@ function App() {
               <Participants
                 handleSelectedVideo={handleSelectedVideo}
                 handleMyNameChange={handleMyNameChange}
-                myName={myName}
-                setMyName={setMyName}
+                nameValue={nameValue}
+                setNameValue={setNameValue}
+                handleClearNameInput={handleClearNameInput}
               />
             )}
           </div>

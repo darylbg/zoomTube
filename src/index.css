@@ -73,6 +73,48 @@ body {
 
 /* chat */
 
+.name-change-form,
+.youtube-search-form {
+  display: flex;
+  padding-bottom: 10px;
+}
+
+.name-change-form input,
+.youtube-search-form input {
+  flex: 1;
+  min-width: 0;
+}
+
+.name-change-form svg {
+  height: 30px;
+  width: 30px;
+  margin: 0 5px;
+  color: white;
+}
+
+.name-change-x {
+  background-color: red;
+}
+
+.name-change-update {
+  background-color: green;
+}
+
+.youtube-search-form button {
+  margin: 0 5px;
+  background-color: blue;
+  color: white;
+  border: none;
+  height: 30px;
+  width: 70px;
+}
+
+.name-change-x:hover,
+.name-change-update:hover,
+.video-search-btn:hover {
+  filter: brightness(85%);
+}
+
 .participants-sidebar {
   padding: 10px;
 }
