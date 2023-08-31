@@ -18,6 +18,9 @@ body {
   overflow: hidden;
   position: relative;
   max-height: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .video-view iframe {
@@ -169,6 +172,9 @@ border-bottom: 1px solid grey;
 
 .footer-icons div:hover {
   background-color: #1A1A1A;
+}
+
+.cursor-pointer {
   cursor: pointer;
 }
 

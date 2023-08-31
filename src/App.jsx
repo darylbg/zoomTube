@@ -15,7 +15,9 @@ function App() {
   const [sidebarToggle, setSidebarToggle] = useState("75%");
   const [sidebarContent, setSidebarContent] = useState("");
   const [sizes, setSizes] = useState([sidebarToggle, "auto"]);
-  const [myName, setMyName] = useState("");
+  const [value, setValue] = useState('me')
+  const [myName, setMyName] = useState('me');
+  const [videoName, setVideoName] = useState('Guest');
   const [videoId, setVideoId] = useState("");
   const [toggleVideoView, setToggleVideoView] = useState(false);
   const [viewWidth, setViewWidth] = useState(0);
@@ -49,7 +51,6 @@ function App() {
 
   const handleSidebarToggleOff = (e) => {
     e.preventDefault();
-
     setSidebarToggle("100%");
   };
 
@@ -61,7 +62,7 @@ function App() {
     console.log(videoId);
   };
 
-  const handleVideoViewHide = (e) => {
+  const handleVideoViewRemove = (e) => {
     e.preventDefault();
     setToggleVideoView(false);
   };
@@ -76,8 +77,19 @@ function App() {
     setIsWebcamVisible(true);
   };
 
+  const toggleVideoHide = (e) => {
+    e.preventDefault();
+    setIsVideoVisible(false);
+  };
+
+  const toggleVideoVisible = (e) => {
+    e.preventDefault();
+    setIsVideoVisible(true);
+  };
+
   const handleMyNameChange = (e) => {
     e.preventDefault();
+    setMyName(e.target.value)
   };
 
   return (
@@ -95,22 +107,32 @@ function App() {
                   <Dropdown.Item onClick={handleSidebarToggle}>
                     Rename
                   </Dropdown.Item>
-                  <Dropdown.Item>
-                    Hide
-                  </Dropdown.Item>
-                  <Dropdown.Item onClick={handleVideoViewHide}>
+                  {isVideoVisible ? (
+                    <Dropdown.Item onClick={toggleVideoHide}>
+                      Hide
+                    </Dropdown.Item>
+                  ) : (
+                    <Dropdown.Item onClick={toggleVideoVisible}>
+                      Show video
+                    </Dropdown.Item>
+                  )}
+                  <Dropdown.Item onClick={handleVideoViewRemove}>
                     Remove
                   </Dropdown.Item>
                 </Dropdown.Menu>
               </Dropdown>
-              <YoutubeEmbedVideo videoId={videoId} suggestions={false} />
+              {isVideoVisible ? (
+                <YoutubeEmbedVideo videoId={videoId} suggestions={false} />
+              ) : (
+                <p>{videoName}</p>
+              )}
             </div>
             <div className="right-view">
               <ViewMenu handleSidebarToggle={handleSidebarToggle} />
               {isWebcamVisible ? (
                 <Webcam style={{ width: "100%" }} />
               ) : (
-                <p>this is hidden</p>
+                <p>{myName}</p>
               )}
             </div>
           </div>
@@ -142,6 +164,8 @@ function App() {
               <Participants
                 handleSelectedVideo={handleSelectedVideo}
                 handleMyNameChange={handleMyNameChange}
+                myName={myName}
+                setMyName={setMyName}
               />
             )}
           </div>

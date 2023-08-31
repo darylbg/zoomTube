@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PlayButtonImg from "../assets/images/play-button-icon-png-18919.png";
 
-function Participants({ handleSelectedVideo, handleMyNameChange }) {
+function Participants({ handleSelectedVideo, handleMyNameChange, myName, setMyName }) {
   const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -45,9 +45,9 @@ function Participants({ handleSelectedVideo, handleMyNameChange }) {
         <form onSubmit={handleMyNameChange}>
           <input
             type="text"
-            value={''}
+            value={myName}
             onChange={(e) => {
-              setInputValue(e.target.value);
+              setMyName(e.target.value);
             }}
           ></input>
           <button type="submit">update</button>

@@ -26,7 +26,7 @@ function Footer({ handleSidebarToggle, toggleWebcamHide, toggleWebcamVisible, is
           <img className="footer-micOff-carretIcon" src={CarretIcon}></img>
           <p>Unmute</p>
         </div>
-        <div onClick={isWebcamVisible ? toggleWebcamHide : toggleWebcamVisible}>
+        <div className="cursor-pointer" onClick={isWebcamVisible ? toggleWebcamHide : toggleWebcamVisible}>
           <div>
             <img src={isWebcamVisible ? VideoOnIcon : VideoOffIcon}></img>
           </div>
@@ -41,7 +41,7 @@ function Footer({ handleSidebarToggle, toggleWebcamHide, toggleWebcamVisible, is
 
           <p>Security</p>
         </div>
-        <div onClick={handleSidebarToggle} data-name="participants">
+        <div className="cursor-pointer" onClick={handleSidebarToggle} data-name="participants">
           <div>
             <img src={ParticipantsIcon}></img>
           </div>
@@ -54,7 +54,7 @@ function Footer({ handleSidebarToggle, toggleWebcamHide, toggleWebcamVisible, is
           <img className="footer-micOff-carretIcon" src={CarretGreenIcon}></img>
           <p style={{ color: "#28E567" }}>Share Screen</p>
         </div>
-        <div onClick={handleSidebarToggle} data-name="chat">
+        <div className="cursor-pointer" onClick={handleSidebarToggle} data-name="chat">
           <div>
             <img src={ChatIcon}></img>
           </div>
