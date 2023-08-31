@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
-import {X, Check} from "feather-icons-react/build/IconComponents";
+import { X, Check } from "feather-icons-react/build/IconComponents";
 import PlayButtonImg from "../assets/images/play-button-icon-png-18919.png";
+import { Accordion } from "react-bootstrap";
 
-function Participants({ handleSelectedVideo, handleMyNameChange, nameValue, setNameValue, handleClearNameInput }) {
+function Participants({
+  handleSelectedVideo,
+  handleMyNameChange,
+  nameValue,
+  setNameValue,
+  handleClearNameInput,
+  handleVideoNameChange,
+  handleClearVideoNameInput,
+  videoNameValue,
+  setVideoNameValue,
+}) {
   const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const [searchInput, setSearchInput] = useState("");
@@ -42,30 +53,61 @@ function Participants({ handleSelectedVideo, handleMyNameChange, nameValue, setN
 
   return (
     <div className="participants-sidebar">
-      <div>
-        <form className="name-change-form">
-          <input
-            type="text"
-            value={nameValue}
-            onChange={(e) => {
-              setNameValue(e.target.value);
-            }}
-          ></input>
-          <X onClick={handleClearNameInput} className='name-change-x cursor-pointer' />
-          <Check onClick={handleMyNameChange} className='name-change-update cursor-pointer' />
-        </form>
-      </div>
+      <Accordion className="rename-accordion">
+        <Accordion.Item eventKey="0">
+          <Accordion.Header>Update view titles</Accordion.Header>
+          <Accordion.Body>
+            <form className="name-change-form">
+              <label>Update my label</label>
+              <input
+                type="text"
+                value={nameValue}
+                onChange={(e) => {
+                  setNameValue(e.target.value);
+                }}
+              ></input>
+              <X
+                onClick={handleClearNameInput}
+                className="name-change-x cursor-pointer"
+              />
+              <Check
+                onClick={handleMyNameChange}
+                className="name-change-update cursor-pointer"
+              />
+              <label style={{marginTop: '10px'}}>Update video label</label>
+              <input
+                type="text"
+                value={videoNameValue}
+                onChange={(e) => {
+                  setVideoNameValue(e.target.value);
+                }}
+              ></input>
+              <X
+                onClick={handleClearVideoNameInput}
+                className="name-change-x cursor-pointer"
+              />
+              <Check
+                onClick={handleVideoNameChange}
+                className="name-change-update cursor-pointer"
+              />
+            </form>
+          </Accordion.Body>
+        </Accordion.Item>
+      </Accordion>
       <div>
         <form onSubmit={handleSearchInput} className="youtube-search-form">
+          <label>Search a Youtube video</label>
           <input
             type="search"
             value={inputValue}
-            placeholder="Search YouTube"
+            placeholder="Search..."
             onChange={(e) => {
               setInputValue(e.target.value);
             }}
           ></input>
-          <button type="submit" className="video-search-btn">search</button>
+          <button type="submit" className="video-search-btn">
+            search
+          </button>
         </form>
       </div>
       <div>

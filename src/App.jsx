@@ -6,11 +6,11 @@ import SplitPane, { Pane } from "split-pane-react";
 import Webcam from "react-webcam";
 import YoutubeEmbedVideo from "youtube-embed-video";
 import ViewMenu from "./components/ViewMenu";
-import MicOffComponent from "./components/MicOffComponent";
 import Dropdown from "react-bootstrap/Dropdown";
 import {
   MoreHorizontal,
   MicOff,
+  X
 } from "feather-icons-react/build/IconComponents";
 import "split-pane-react/esm/themes/default.css";
 import "./index.css";
@@ -19,12 +19,15 @@ function App() {
   const [sidebarToggle, setSidebarToggle] = useState("75%");
   const [sidebarContent, setSidebarContent] = useState("");
   const [sizes, setSizes] = useState([sidebarToggle, "auto"]);
+
   const [nameValue, setNameValue] = useState("me");
   const [myName, setMyName] = useState("me");
+
+  const [videoNameValue, setVideoNameValue] = useState('Guest');
   const [videoName, setVideoName] = useState("Guest");
+
   const [videoId, setVideoId] = useState("");
   const [toggleVideoView, setToggleVideoView] = useState(false);
-  const [viewWidth, setViewWidth] = useState(0);
   const [isWebcamVisible, setIsWebcamVisible] = useState(false);
   const [isVideoVisible, setIsVideoVisible] = useState(true);
 
@@ -101,6 +104,16 @@ function App() {
     setNameValue("");
   };
 
+  const handleVideoNameChange = (e) => {
+    e.preventDefault();
+    setVideoName(videoNameValue);
+  };
+
+  const handleClearVideoNameInput = (e) => {
+    e.preventDefault();
+    setVideoNameValue("");
+  };
+
   return (
     <div style={{ height: "100vh" }}>
       <SplitPane
@@ -138,7 +151,7 @@ function App() {
               {isVideoVisible ? (
                 <YoutubeEmbedVideo videoId={videoId} suggestions={false} />
               ) : (
-                <p>{videoName}</p>
+                <p className="view-title">{videoName}</p>
               )}
               <div className="view-mute-label">
                 <MicOff />
@@ -150,7 +163,7 @@ function App() {
               {isWebcamVisible ? (
                 <Webcam style={{ width: "100%" }} />
               ) : (
-                <p>{myName}</p>
+                <p className="view-title">{myName}</p>
               )}
               <div className="view-mute-label">
                 <MicOff />
@@ -178,7 +191,7 @@ function App() {
               onClick={handleSidebarToggleOff}
               className="close-sidebar-btn"
             >
-              x
+              <X />
             </button>
             {sidebarContent === "chat" ? (
               <Chat videoId={videoId} />
@@ -189,6 +202,10 @@ function App() {
                 nameValue={nameValue}
                 setNameValue={setNameValue}
                 handleClearNameInput={handleClearNameInput}
+                handleVideoNameChange={handleVideoNameChange}
+                handleClearVideoNameInput={handleClearVideoNameInput}
+                setVideoNameValue={setVideoNameValue}
+                videoNameValue={videoNameValue}
               />
             )}
           </div>
