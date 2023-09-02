@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MicOnIcon from "../assets/icons/micOn.svg";
 import MicOffIcon from "../assets/icons/micOff.svg";
 import VideoOffIcon from "../assets/icons/videoOff.svg";
@@ -14,7 +14,35 @@ import WhiteboardsIcon from "../assets/icons/whiteboards.svg";
 import CarretIcon from "../assets/icons/carret.svg";
 import CarretGreenIcon from "../assets/icons/carretGreen.svg";
 
-function Footer({ handleSidebarToggle, toggleWebcamHide, toggleWebcamVisible, isWebcamVisible }) {
+function CollapsibleItem({ icon, text, onClick }) {
+  return (
+    <div className="collapsible" onClick={onClick}>
+      <div>
+        <img src={icon} alt="Icon" />
+      </div>
+      <p>{text}</p>
+    </div>
+  );
+}
+
+function Footer({
+  handleSidebarToggle,
+  toggleWebcamHide,
+  toggleWebcamVisible,
+  isWebcamVisible,
+  paneWidth,
+}) {
+  
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+  };
+
   return (
     <footer className="footer">
       <div className="footer-icons">
@@ -26,7 +54,10 @@ function Footer({ handleSidebarToggle, toggleWebcamHide, toggleWebcamVisible, is
           <img className="footer-micOff-carretIcon" src={CarretIcon}></img>
           <p>Unmute</p>
         </div>
-        <div className="cursor-pointer" onClick={isWebcamVisible ? toggleWebcamHide : toggleWebcamVisible}>
+        <div
+          className="cursor-pointer"
+          onClick={isWebcamVisible ? toggleWebcamHide : toggleWebcamVisible}
+        >
           <div>
             <img src={isWebcamVisible ? VideoOnIcon : VideoOffIcon}></img>
           </div>
@@ -34,60 +65,76 @@ function Footer({ handleSidebarToggle, toggleWebcamHide, toggleWebcamVisible, is
         </div>
       </div>
       <div className="footer-icons">
-        <div>
-          <div>
-            <img src={SecurityIcon}></img>
-          </div>
-
-          <p>Security</p>
-        </div>
-        <div className="cursor-pointer" onClick={handleSidebarToggle} data-name="participants">
-          <div>
-            <img src={ParticipantsIcon}></img>
-          </div>
-          <p>Participants</p>
-        </div>
-        <div>
-          <div>
-            <img src={ShareScreenIcon}></img>
-          </div>
-          <img className="footer-micOff-carretIcon" src={CarretGreenIcon}></img>
-          <p style={{ color: "#28E567" }}>Share Screen</p>
-        </div>
-        <div className="cursor-pointer" onClick={handleSidebarToggle} data-name="chat">
-          <div>
-            <img src={ChatIcon}></img>
-          </div>
-          <img className="footer-micOff-carretIcon" src={CarretIcon}></img>
-          <p>Chat</p>
-        </div>
-        <div>
-          <div>
-            <img src={WhiteboardsIcon}></img>
-          </div>
-          <img className="footer-micOff-carretIcon" src={CarretIcon}></img>
-          <p>Whiteboards</p>
-        </div>
-        <div>
-          <div>
-            <img src={ReactionsIcon}></img>
-          </div>
-
-          <p>Reactions</p>
-        </div>
-        <div>
-          <div>
-            <img src={SettingsIcon}></img>
-          </div>
-
-          <p>Settings</p>
-        </div>
-        <div>
+      <CollapsibleItem
+          icon={SecurityIcon}
+          text="Security"
+        />
+        <CollapsibleItem
+          icon={ParticipantsIcon}
+          text="Participants"
+          onClick={() => handleSidebarToggle("participants")}
+        />
+        <CollapsibleItem
+          icon={ShareScreenIcon}
+          text="Share Screen"
+          onClick={() => handleSidebarToggle("chat")}
+        />
+        <CollapsibleItem
+          icon={ChatIcon}
+          text="Chat"
+        />
+        <CollapsibleItem
+          icon={WhiteboardsIcon}
+          text="Whiteboards"
+        />
+        <CollapsibleItem
+          icon={ReactionsIcon}
+          text="Reactions"
+        />
+        <CollapsibleItem
+          icon={SettingsIcon}
+          text="Settings"
+        />
+        <div className="dropup cursor-pointer" onClick={toggleMenu}>
           <div>
             <img src={MoreIcon}></img>
           </div>
 
           <p>More</p>
+          {isOpen && (
+            <div className="dropup-content" onClick={closeMenu}>
+              <CollapsibleItem
+          icon={SecurityIcon}
+          text="Security"
+        />
+        <CollapsibleItem
+          icon={ParticipantsIcon}
+          text="Participants"
+          onClick={() => handleSidebarToggle("participants")}
+        />
+        <CollapsibleItem
+          icon={ShareScreenIcon}
+          text="Share Screen"
+          onClick={() => handleSidebarToggle("chat")}
+        />
+        <CollapsibleItem
+          icon={ChatIcon}
+          text="Chat"
+        />
+        <CollapsibleItem
+          icon={WhiteboardsIcon}
+          text="Whiteboards"
+        />
+        <CollapsibleItem
+          icon={ReactionsIcon}
+          text="Reactions"
+        />
+        <CollapsibleItem
+          icon={SettingsIcon}
+          text="Settings"
+        />
+            </div>
+          )}
         </div>
       </div>
       <div className="footer-right-icons">

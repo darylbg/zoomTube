@@ -31,7 +31,9 @@ function App() {
   const [isWebcamVisible, setIsWebcamVisible] = useState(false);
   const [isVideoVisible, setIsVideoVisible] = useState(true);
 
-  const viewRef = useRef(null);
+  const [paneWidth, setPaneWidth] = useState(0);
+
+  const elementRef = useRef(null);
 
   const layoutCSS = {
     height: "100%",
@@ -41,13 +43,19 @@ function App() {
   };
 
   useEffect(() => {
+    setPaneWidth(elementRef.current.offsetWidth);
+  }, [sizes]);
+  console.log(`this is the pane width: ${paneWidth}`)
+
+
+  useEffect(() => {
     setSizes([sidebarToggle, "auto"]);
   }, [sidebarToggle]);
 
   const handleSidebarToggle = (e) => {
     e.preventDefault();
     const elName = e.currentTarget.getAttribute("data-name");
-    console.log(elName);
+    // console.log(elName);
     if (elName === "chat") {
       setSidebarContent("chat");
     } else if (elName === "participants") {
@@ -71,6 +79,7 @@ function App() {
 
   const handleVideoViewRemove = (e) => {
     e.preventDefault();
+    setIsVideoVisible(false);
     setToggleVideoView(false);
   };
 
@@ -123,7 +132,7 @@ function App() {
         className="split-pane-section"
       >
         <Pane minSize={"50%"} maxSize={"95%"}>
-          <div style={{ ...layoutCSS }} ref={viewRef}>
+          <div style={{ ...layoutCSS }} ref={elementRef }>
             <div className={`video-view ${toggleVideoView ? "" : "d-none"}`}>
               <Dropdown className="view-menu-dropdown">
                 <Dropdown.Toggle variant="primary" id="dropdown-basic">
@@ -176,6 +185,7 @@ function App() {
             toggleWebcamVisible={toggleWebcamVisible}
             toggleWebcamHide={toggleWebcamHide}
             isWebcamVisible={isWebcamVisible}
+            paneWidth={paneWidth}
           />
         </Pane>
         <div style={{ ...layoutCSS, background: "#d5d7d9" }}>
@@ -206,6 +216,7 @@ function App() {
                 handleClearVideoNameInput={handleClearVideoNameInput}
                 setVideoNameValue={setVideoNameValue}
                 videoNameValue={videoNameValue}
+                toggleVideoView={toggleVideoView}
               />
             )}
           </div>

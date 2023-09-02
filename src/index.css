@@ -7,6 +7,10 @@ body {
   /* background-color: #111111; */
 }
 
+input:focus-visible {
+  outline-offset: 0;
+}
+
 .split-pane-section {
   background-color: #111111;
 }
@@ -139,7 +143,7 @@ body {
 .name-change-form svg {
   height: 30px;
   width: 30px;
-  margin: 0 5px;
+  margin-left: 8px;
   color: white;
   padding: 4px;
 }
@@ -317,3 +321,13 @@ body {
 .leave-button:hover {
   background-color: red;
 }
+
+/* more button */
+
+.dropup-content {
+  position: absolute !important;
+  bottom: 55px;
+  right: 0;
+  flex-direction: column;
+}
+

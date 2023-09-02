@@ -13,6 +13,7 @@ function Participants({
   handleClearVideoNameInput,
   videoNameValue,
   setVideoNameValue,
+  toggleVideoView
 }) {
   const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -55,7 +56,7 @@ function Participants({
     <div className="participants-sidebar">
       <Accordion className="rename-accordion">
         <Accordion.Item eventKey="0">
-          <Accordion.Header>Update view titles</Accordion.Header>
+          <Accordion.Header>Update participant labels</Accordion.Header>
           <Accordion.Body>
             <form className="name-change-form">
               <label>Update my label</label>
@@ -74,28 +75,38 @@ function Participants({
                 onClick={handleMyNameChange}
                 className="name-change-update cursor-pointer"
               />
-              <label style={{marginTop: '10px'}}>Update video label</label>
-              <input
-                type="text"
-                value={videoNameValue}
-                onChange={(e) => {
-                  setVideoNameValue(e.target.value);
-                }}
-              ></input>
-              <X
-                onClick={handleClearVideoNameInput}
-                className="name-change-x cursor-pointer"
-              />
-              <Check
-                onClick={handleVideoNameChange}
-                className="name-change-update cursor-pointer"
-              />
+              {toggleVideoView ? (
+                <>
+                  <label style={{ marginTop: "10px" }}>
+                    Update video label
+                  </label>
+                  <input
+                    type="text"
+                    value={videoNameValue}
+                    onChange={(e) => {
+                      setVideoNameValue(e.target.value);
+                    }}
+                  ></input>
+                  <X
+                    onClick={handleClearVideoNameInput}
+                    className="name-change-x cursor-pointer"
+                  />
+                  <Check
+                    onClick={handleVideoNameChange}
+                    className="name-change-update cursor-pointer"
+                  />
+                </>
+              ) : null}
             </form>
           </Accordion.Body>
         </Accordion.Item>
       </Accordion>
       <div>
-        <form onSubmit={handleSearchInput} className="youtube-search-form">
+        <form
+          onSubmit={handleSearchInput}
+          className="youtube-search-form"
+          style={{ marginTop: "10px" }}
+        >
           <label>Search a Youtube video</label>
           <input
             type="search"
