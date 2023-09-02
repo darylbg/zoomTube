@@ -331,8 +331,32 @@ input:focus-visible {
   flex-direction: column;
   align-items: flex-start;
   background-color: #040404;
+  padding: 0 !important;
+  justify-content: left;
+}
+
+.dropup-content:hover {
+  background-color: #040404 !important;
+}
+
+.dropup-content div {
+  display: flex;
+  align-items: center;
+  border-radius: 0;
+  width: 100%;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 5px;
+  margin: 2px 0;
+}
+
+.dropup-content div p {
+  margin: 0;
+  width: 100%;
+  padding: 5px;
+  
 }
 
 .hide-1 {
-  display: none;
+  display: none !important;
 }

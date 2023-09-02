@@ -32,6 +32,7 @@ function App() {
   const [isVideoVisible, setIsVideoVisible] = useState(true);
 
   const [paneWidth, setPaneWidth] = useState(0);
+  const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
   const elementRef = useRef(null);
 
@@ -42,11 +43,21 @@ function App() {
     justifyContent: "space-between",
   };
 
+
+  const handleResize = () => {
+    setViewportWidth(window.innerWidth);
+  };
+
+  useEffect(() => {
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   useEffect(() => {
     setPaneWidth(elementRef.current.offsetWidth);
-  }, [sizes]);
-  console.log(`this is the pane width: ${paneWidth}`)
-
+  }, [sizes, viewportWidth]);
 
   useEffect(() => {
     setSizes([sidebarToggle, "auto"]);

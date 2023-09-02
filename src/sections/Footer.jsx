@@ -68,73 +68,87 @@ function Footer({
         </div>
       </div>
       <div className="footer-icons">
-        <CollapsibleItem icon={SecurityIcon} text="Security" className='' />
+        <CollapsibleItem
+          icon={SecurityIcon}
+          text="Security"
+          className={`${paneWidth < 530 ? "hide-1" : ""}`}
+        />
         <CollapsibleItem
           icon={ParticipantsIcon}
           text="Participants"
           dataName="participants"
           onClick={handleSidebarToggle}
-          className=""
+          className={`cursor-pointer ${paneWidth < 530 ? "hide-1" : ""}`}
         />
         <CollapsibleItem
           icon={ShareScreenIcon}
           text="Share Screen"
-          className=""
+          className={`${paneWidth < 750 ? "hide-1" : ""}`}
         />
         <CollapsibleItem
           icon={ChatIcon}
           text="Chat"
           dataName="chat"
           onClick={handleSidebarToggle}
-          className=""
+          className={`cursor-pointer ${paneWidth < 750 ? "hide-1" : ""}`}
         />
         <CollapsibleItem
           icon={WhiteboardsIcon}
           text="Whiteboards"
-          className=""
+          className={`${paneWidth < 980 ? "hide-1" : ""}`}
         />
         <CollapsibleItem
           icon={ReactionsIcon}
           text="Reactions"
-          className=""
+          className={`${paneWidth < 980 ? "hide-1" : ""}`}
         />
         <CollapsibleItem
           icon={SettingsIcon}
           text="Settings"
-          className={`${paneWidth < 980 ? 'hide-1' : ''}`}
+          className={`${paneWidth < 980 ? "hide-1" : ""}`}
         />
-        <div className="dropup cursor-pointer" onClick={toggleMenu}>
-          <div>
-            <img src={MoreIcon}></img>
-          </div>
-
-          <p>More</p>
-          {isOpen && (
-            <div className="dropup-content" onClick={closeMenu}>
-              <div>
-                <p>Security</p>
-              </div>
-              <div onClick={handleSidebarToggle} data-name="participants">
-                <p>Participants</p>
-              </div>
-              <div>
-                <p>Share Screen</p>
-              </div>
-              <div onClick={handleSidebarToggle} data-name="chat">
-                <p>Chat</p>
-              </div>
-              <div>
-                <p>Whiteboards</p>
-              </div>
-              <div>
-                <p>Reactions</p>
-              </div>
-              <div>
-                <p>Settings</p>
-              </div>
+        {paneWidth < 980 ? (
+          <div className="dropup cursor-pointer" onClick={toggleMenu}>
+            <div>
+              <img src={MoreIcon}></img>
             </div>
-          )}
-        </div>
+
+            <p>More</p>
+            {isOpen && (
+              <div className="dropup-content" onClick={closeMenu}>
+                <div className={`${paneWidth > 530 ? "hide-1" : ""}`}>
+                  <p>Security</p>
+                </div>
+                <div
+                  onClick={handleSidebarToggle}
+                  data-name="participants"
+                  className={`cursor-pointer ${paneWidth > 530 ? "hide-1" : ""}`}
+                >
+                  <p>Participants</p>
+                </div>
+                <div className={`${paneWidth > 750 ? "hide-1" : ""}`}>
+                  <p>Share Screen</p>
+                </div>
+                <div
+                  onClick={handleSidebarToggle}
+                  data-name="chat"
+                  className={`cursor-pointer ${paneWidth > 750 ? "hide-1" : ""}`}
+                >
+                  <p>Chat</p>
+                </div>
+                <div className={`${paneWidth > 980 ? "hide-1" : ""}`}>
+                  <p>Whiteboards</p>
+                </div>
+                <div className={`${paneWidth > 980 ? "hide-1" : ""}`}>
+                  <p>Reactions</p>
+                </div>
+                <div className={`${paneWidth > 980 ? "hide-1" : ""}`}>
+                  <p>Settings</p>
+                </div>
+              </div>
+            )}
+          </div>
+        ) : null}
       </div>
       <div className="footer-right-icons">
         <button className="leave-button">Leave</button>
