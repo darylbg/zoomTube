@@ -10,7 +10,7 @@ import Dropdown from "react-bootstrap/Dropdown";
 import {
   MoreHorizontal,
   MicOff,
-  X
+  X,
 } from "feather-icons-react/build/IconComponents";
 import "split-pane-react/esm/themes/default.css";
 import "./index.css";
@@ -23,7 +23,7 @@ function App() {
   const [nameValue, setNameValue] = useState("me");
   const [myName, setMyName] = useState("me");
 
-  const [videoNameValue, setVideoNameValue] = useState('Guest');
+  const [videoNameValue, setVideoNameValue] = useState("Guest");
   const [videoName, setVideoName] = useState("Guest");
 
   const [videoId, setVideoId] = useState("");
@@ -37,21 +37,25 @@ function App() {
   const elementRef = useRef(null);
 
   const layoutCSS = {
-    height: "100%",
+    minHeight: "100%",
     display: "flex",
-    alignItems: "center",
+    flexDirection: `${paneWidth < 800 ? 'column' : 'row' }`,
     justifyContent: "space-between",
+    paddingBottom: '52px',
   };
 
+  const smallLayoutCss = {
+    width: '80%'
+  }
 
   const handleResize = () => {
     setViewportWidth(window.innerWidth);
   };
 
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -135,7 +139,7 @@ function App() {
   };
 
   return (
-    <div style={{ height: "100vh" }}>
+    <div style={{ height: "100vh", overflow: "hidden" }}>
       <SplitPane
         split="vertical"
         sizes={sizes}
@@ -143,51 +147,55 @@ function App() {
         className="split-pane-section"
       >
         <Pane minSize={"50%"} maxSize={"95%"}>
-          <div style={{ ...layoutCSS }} ref={elementRef }>
-            <div className={`video-view ${toggleVideoView ? "" : "d-none"}`}>
-              <Dropdown className="view-menu-dropdown">
-                <Dropdown.Toggle variant="primary" id="dropdown-basic">
-                  <MoreHorizontal />
-                </Dropdown.Toggle>
+          <div style={{ ...layoutCSS, alignItems: "center" }} ref={elementRef}>
+            <div style={paneWidth < 800 ? {...smallLayoutCss} : ''} className={`view-wrapper ${toggleVideoView ? "" : "d-none"}`}>
+              <div className={`video-view `}>
+                <Dropdown className="view-menu-dropdown">
+                  <Dropdown.Toggle variant="primary" id="dropdown-basic">
+                    <MoreHorizontal />
+                  </Dropdown.Toggle>
 
-                <Dropdown.Menu className="view-menu-option">
-                  <Dropdown.Item onClick={handleSidebarToggle}>
-                    Rename
-                  </Dropdown.Item>
-                  {isVideoVisible ? (
-                    <Dropdown.Item onClick={toggleVideoHide}>
-                      Hide
+                  <Dropdown.Menu className="view-menu-option">
+                    <Dropdown.Item onClick={handleSidebarToggle}>
+                      Rename
                     </Dropdown.Item>
-                  ) : (
-                    <Dropdown.Item onClick={toggleVideoVisible}>
-                      Show video
+                    {isVideoVisible ? (
+                      <Dropdown.Item onClick={toggleVideoHide}>
+                        Hide
+                      </Dropdown.Item>
+                    ) : (
+                      <Dropdown.Item onClick={toggleVideoVisible}>
+                        Show video
+                      </Dropdown.Item>
+                    )}
+                    <Dropdown.Item onClick={handleVideoViewRemove}>
+                      Remove
                     </Dropdown.Item>
-                  )}
-                  <Dropdown.Item onClick={handleVideoViewRemove}>
-                    Remove
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-              </Dropdown>
-              {isVideoVisible ? (
-                <YoutubeEmbedVideo videoId={videoId} suggestions={false} />
-              ) : (
-                <p className="view-title">{videoName}</p>
-              )}
-              <div className="view-mute-label">
-                <MicOff />
-                <p>{videoName}</p>
+                  </Dropdown.Menu>
+                </Dropdown>
+                {isVideoVisible ? (
+                  <YoutubeEmbedVideo videoId={videoId} suggestions={false} />
+                ) : (
+                  <p className="view-title">{videoName}</p>
+                )}
+                <div className="view-mute-label">
+                  <MicOff />
+                  <p>{videoName}</p>
+                </div>
               </div>
             </div>
-            <div className="right-view">
-              <ViewMenu handleSidebarToggle={handleSidebarToggle} />
-              {isWebcamVisible ? (
-                <Webcam style={{ width: "100%" }} />
-              ) : (
-                <p className="view-title">{myName}</p>
-              )}
-              <div className="view-mute-label">
-                <MicOff />
-                <p>{myName}</p>
+            <div style={paneWidth < 800 ? smallLayoutCss : null} className="view-wrapper">
+              <div className="right-view">
+                <ViewMenu handleSidebarToggle={handleSidebarToggle} />
+                {isWebcamVisible ? (
+                  <Webcam style={{ width: "100%" }} />
+                ) : (
+                  <p className="view-title">{myName}</p>
+                )}
+                <div className="view-mute-label">
+                  <MicOff />
+                  <p>{myName}</p>
+                </div>
               </div>
             </div>
           </div>
@@ -199,13 +207,12 @@ function App() {
             paneWidth={paneWidth}
           />
         </Pane>
-        <div style={{ ...layoutCSS, background: "#d5d7d9" }}>
+        <div style={{ ...layoutCSS, background: "white" }}>
           <div
             style={{
-              height: "100%",
+              height: "100vh",
               width: "100%",
               backgroundColor: "white",
-              border: "1px solid black",
             }}
           >
             <button

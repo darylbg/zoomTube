@@ -54,6 +54,7 @@ function Participants({
 
   return (
     <div className="participants-sidebar">
+      <div className="participants-sidebar-wrapper">
       <Accordion className="rename-accordion">
         <Accordion.Item eventKey="0">
           <Accordion.Header>Update participant labels</Accordion.Header>
@@ -121,7 +122,8 @@ function Participants({
           </button>
         </form>
       </div>
-      <div>
+      </div>
+      <div className="search-results-wrapper">
         <ul className="search-results">
           {searchResults &&
             searchResults.map((result) => (
