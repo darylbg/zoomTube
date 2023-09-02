@@ -14,9 +14,13 @@ import WhiteboardsIcon from "../assets/icons/whiteboards.svg";
 import CarretIcon from "../assets/icons/carret.svg";
 import CarretGreenIcon from "../assets/icons/carretGreen.svg";
 
-function CollapsibleItem({ icon, text, onClick }) {
+function CollapsibleItem({ icon, text, onClick, dataName, className }) {
   return (
-    <div className="collapsible" onClick={onClick}>
+    <div
+      className={`'collapsible' ${className}`}
+      onClick={onClick}
+      data-name={dataName}
+    >
       <div>
         <img src={icon} alt="Icon" />
       </div>
@@ -32,7 +36,6 @@ function Footer({
   isWebcamVisible,
   paneWidth,
 }) {
-  
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -65,35 +68,40 @@ function Footer({
         </div>
       </div>
       <div className="footer-icons">
-      <CollapsibleItem
-          icon={SecurityIcon}
-          text="Security"
-        />
+        <CollapsibleItem icon={SecurityIcon} text="Security" className='' />
         <CollapsibleItem
           icon={ParticipantsIcon}
           text="Participants"
-          onClick={() => handleSidebarToggle("participants")}
+          dataName="participants"
+          onClick={handleSidebarToggle}
+          className=""
         />
         <CollapsibleItem
           icon={ShareScreenIcon}
           text="Share Screen"
-          onClick={() => handleSidebarToggle("chat")}
+          className=""
         />
         <CollapsibleItem
           icon={ChatIcon}
           text="Chat"
+          dataName="chat"
+          onClick={handleSidebarToggle}
+          className=""
         />
         <CollapsibleItem
           icon={WhiteboardsIcon}
           text="Whiteboards"
+          className=""
         />
         <CollapsibleItem
           icon={ReactionsIcon}
           text="Reactions"
+          className=""
         />
         <CollapsibleItem
           icon={SettingsIcon}
           text="Settings"
+          className={`${paneWidth < 980 ? 'hide-1' : ''}`}
         />
         <div className="dropup cursor-pointer" onClick={toggleMenu}>
           <div>
@@ -103,36 +111,27 @@ function Footer({
           <p>More</p>
           {isOpen && (
             <div className="dropup-content" onClick={closeMenu}>
-              <CollapsibleItem
-          icon={SecurityIcon}
-          text="Security"
-        />
-        <CollapsibleItem
-          icon={ParticipantsIcon}
-          text="Participants"
-          onClick={() => handleSidebarToggle("participants")}
-        />
-        <CollapsibleItem
-          icon={ShareScreenIcon}
-          text="Share Screen"
-          onClick={() => handleSidebarToggle("chat")}
-        />
-        <CollapsibleItem
-          icon={ChatIcon}
-          text="Chat"
-        />
-        <CollapsibleItem
-          icon={WhiteboardsIcon}
-          text="Whiteboards"
-        />
-        <CollapsibleItem
-          icon={ReactionsIcon}
-          text="Reactions"
-        />
-        <CollapsibleItem
-          icon={SettingsIcon}
-          text="Settings"
-        />
+              <div>
+                <p>Security</p>
+              </div>
+              <div onClick={handleSidebarToggle} data-name="participants">
+                <p>Participants</p>
+              </div>
+              <div>
+                <p>Share Screen</p>
+              </div>
+              <div onClick={handleSidebarToggle} data-name="chat">
+                <p>Chat</p>
+              </div>
+              <div>
+                <p>Whiteboards</p>
+              </div>
+              <div>
+                <p>Reactions</p>
+              </div>
+              <div>
+                <p>Settings</p>
+              </div>
             </div>
           )}
         </div>
