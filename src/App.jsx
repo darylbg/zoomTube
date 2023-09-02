@@ -39,7 +39,7 @@ function App() {
   const layoutCSS = {
     minHeight: "100%",
     display: "flex",
-    flexDirection: `${paneWidth < 800 ? 'column' : 'row' }`,
+    flexDirection: paneWidth < 800 ? 'column' : 'row',
     justifyContent: "space-between",
     paddingBottom: '52px',
   };
@@ -148,7 +148,7 @@ function App() {
       >
         <Pane minSize={"50%"} maxSize={"95%"}>
           <div style={{ ...layoutCSS, alignItems: "center" }} ref={elementRef}>
-            <div style={paneWidth < 800 ? {...smallLayoutCss} : ''} className={`view-wrapper ${toggleVideoView ? "" : "d-none"}`}>
+            <div style={paneWidth < 800 ? smallLayoutCss : null} className={`view-wrapper ${toggleVideoView ? "" : "d-none"}`}>
               <div className={`video-view `}>
                 <Dropdown className="view-menu-dropdown">
                   <Dropdown.Toggle variant="primary" id="dropdown-basic">
