@@ -48,6 +48,15 @@ function App() {
     width: '80%'
   }
 
+  useEffect(() => {
+    const handleViewPadding = () => {
+      if (paneWidth > 1100 && toggleVideoView == true) {
+        // return padding = paneWidth / 100
+      }
+    }
+  handleViewPadding();
+  }, [sizes, viewportWidth])
+
   const handleResize = () => {
     setViewportWidth(window.innerWidth);
   };

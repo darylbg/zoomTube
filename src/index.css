@@ -28,6 +28,10 @@ input:focus-visible {
   align-items: center;
 }
 
+/* @media screen and (min-width: ) {
+  
+} */
+
 .view-title {
   color: white;
   font-weight: bold;
