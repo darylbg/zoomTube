@@ -1,28 +1,28 @@
 {
   "files": {
-    "main.css": "/static/css/main.192fb70e.css",
-    "main.js": "/static/js/main.4dba335f.js",
-    "static/media/play-button-icon-png-18919.png": "/static/media/play-button-icon-png-18919.aa085afb60cf6e5da932.png",
-    "static/media/whiteboards.svg": "/static/media/whiteboards.f5cef418eed7ec304c707ff147bf64d2.svg",
-    "static/media/settings.svg": "/static/media/settings.0203b6a79f5a7bd40e5b4299a97a3977.svg",
-    "static/media/reactions.svg": "/static/media/reactions.49a9632614d3725a423922248300f648.svg",
-    "static/media/security.svg": "/static/media/security.f1d75eb95938bcda4ff07c6a27688647.svg",
-    "static/media/micOff.svg": "/static/media/micOff.472930fc5775ee5810a4727a89526391.svg",
-    "static/media/shareScreen.svg": "/static/media/shareScreen.688c21aa0b9728402742a858ef4149de.svg",
-    "index.html": "/index.html",
-    "static/media/participants.svg": "/static/media/participants.d86c18f71a9a7135b30ef3c365784b85.svg",
-    "static/media/videoOff.svg": "/static/media/videoOff.e0233f00dd368a6be7255a594cb75fca.svg",
-    "static/media/videoOn.svg": "/static/media/videoOn.e1a3d4cf4ad927264f4bc9ba6b5a425d.svg",
-    "static/media/micOn.svg": "/static/media/micOn.574a9ecf973bbd4ac258fe8821b432cd.svg",
-    "static/media/chat.svg": "/static/media/chat.faa0fdeba295bc01828ddfe38368bd8a.svg",
-    "static/media/more.svg": "/static/media/more.dad0590dab7669324246966b5374dc6d.svg",
-    "static/media/carretGreen.svg": "/static/media/carretGreen.7f81a4e2d108bb7c6a0c6e0b21bb020b.svg",
-    "static/media/carret.svg": "/static/media/carret.91d550d2c64c57346909ec3b8cc4a9c9.svg",
-    "main.192fb70e.css.map": "/static/css/main.192fb70e.css.map",
-    "main.4dba335f.js.map": "/static/js/main.4dba335f.js.map"
+    "main.css": "/zoomTube/static/css/main.192fb70e.css",
+    "main.js": "/zoomTube/static/js/main.4c2faa3c.js",
+    "static/media/play-button-icon-png-18919.png": "/zoomTube/static/media/play-button-icon-png-18919.aa085afb60cf6e5da932.png",
+    "static/media/whiteboards.svg": "/zoomTube/static/media/whiteboards.f5cef418eed7ec304c707ff147bf64d2.svg",
+    "static/media/settings.svg": "/zoomTube/static/media/settings.0203b6a79f5a7bd40e5b4299a97a3977.svg",
+    "static/media/reactions.svg": "/zoomTube/static/media/reactions.49a9632614d3725a423922248300f648.svg",
+    "static/media/security.svg": "/zoomTube/static/media/security.f1d75eb95938bcda4ff07c6a27688647.svg",
+    "static/media/micOff.svg": "/zoomTube/static/media/micOff.472930fc5775ee5810a4727a89526391.svg",
+    "index.html": "/zoomTube/index.html",
+    "static/media/shareScreen.svg": "/zoomTube/static/media/shareScreen.688c21aa0b9728402742a858ef4149de.svg",
+    "static/media/participants.svg": "/zoomTube/static/media/participants.d86c18f71a9a7135b30ef3c365784b85.svg",
+    "static/media/videoOff.svg": "/zoomTube/static/media/videoOff.e0233f00dd368a6be7255a594cb75fca.svg",
+    "static/media/videoOn.svg": "/zoomTube/static/media/videoOn.e1a3d4cf4ad927264f4bc9ba6b5a425d.svg",
+    "static/media/micOn.svg": "/zoomTube/static/media/micOn.574a9ecf973bbd4ac258fe8821b432cd.svg",
+    "static/media/chat.svg": "/zoomTube/static/media/chat.faa0fdeba295bc01828ddfe38368bd8a.svg",
+    "static/media/more.svg": "/zoomTube/static/media/more.dad0590dab7669324246966b5374dc6d.svg",
+    "static/media/carretGreen.svg": "/zoomTube/static/media/carretGreen.7f81a4e2d108bb7c6a0c6e0b21bb020b.svg",
+    "static/media/carret.svg": "/zoomTube/static/media/carret.91d550d2c64c57346909ec3b8cc4a9c9.svg",
+    "main.192fb70e.css.map": "/zoomTube/static/css/main.192fb70e.css.map",
+    "main.4c2faa3c.js.map": "/zoomTube/static/js/main.4c2faa3c.js.map"
   },
   "entrypoints": [
     "static/css/main.192fb70e.css",
-    "static/js/main.4dba335f.js"
+    "static/js/main.4c2faa3c.js"
   ]
 }
