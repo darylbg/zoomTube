@@ -1,5 +1,6 @@
 {
   "name": "zoomtube",
+  "homepage": "https://darylbg.github.io/zoomTube/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
