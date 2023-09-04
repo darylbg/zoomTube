@@ -44,10 +44,6 @@ function App() {
     paddingBottom: "52px",
   };
 
-  // const smallLayoutCss = {
-  //   width: "80%",
-  // };
-
   const mediumLayoutCss = {
     flex: "0.8",
   };
@@ -165,6 +161,13 @@ function App() {
     setVideoNameValue("");
   };
 
+  const handleDateFormat = (date) => {
+    const options = { year: "numeric", month: "2-digit", day: "2-digit" };
+    return new Date(date)
+      .toLocaleDateString("en-US", options)
+      .replace(/\//g, "-");
+  };
+
   return (
     <div style={{ height: "100vh", overflow: "hidden" }}>
       <SplitPane
@@ -257,6 +260,7 @@ function App() {
             toggleWebcamHide={toggleWebcamHide}
             isWebcamVisible={isWebcamVisible}
             paneWidth={paneWidth}
+            handleVideoViewRemove={handleVideoViewRemove}
           />
         </Pane>
         <div style={{ ...layoutCSS, background: "white" }}>
@@ -269,12 +273,19 @@ function App() {
           >
             <button
               onClick={handleSidebarToggleOff}
-              className="close-sidebar-btn"
+              className={`close-sidebar-btn ${
+                sidebarContent === "chat" ? "btn-box-shadow" : ""
+              }`}
             >
               <X />
             </button>
             {sidebarContent === "chat" ? (
-              <Chat videoId={videoId} />
+              <Chat
+                videoId={videoId}
+                handleDateFormat={handleDateFormat}
+                paneWidth={paneWidth}
+                viewportWidth={viewportWidth}
+              />
             ) : (
               <Participants
                 handleSelectedVideo={handleSelectedVideo}
@@ -287,6 +298,7 @@ function App() {
                 setVideoNameValue={setVideoNameValue}
                 videoNameValue={videoNameValue}
                 toggleVideoView={toggleVideoView}
+                handleDateFormat={handleDateFormat}
               />
             )}
           </div>

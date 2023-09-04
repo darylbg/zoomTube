@@ -14,7 +14,13 @@ import WhiteboardsIcon from "../assets/icons/whiteboards.svg";
 import CarretIcon from "../assets/icons/carret.svg";
 import CarretGreenIcon from "../assets/icons/carretGreen.svg";
 
-function CollapsibleItem({ icon, text, onClick, dataName, className }) {
+function CollapsibleItem({
+  icon,
+  text,
+  onClick,
+  dataName,
+  className,
+}) {
   return (
     <div
       className={`'collapsible' ${className}`}
@@ -35,6 +41,7 @@ function Footer({
   toggleWebcamVisible,
   isWebcamVisible,
   paneWidth,
+  handleVideoViewRemove
 }) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -122,7 +129,9 @@ function Footer({
                 <div
                   onClick={handleSidebarToggle}
                   data-name="participants"
-                  className={`cursor-pointer ${paneWidth > 530 ? "hide-1" : ""}`}
+                  className={`cursor-pointer ${
+                    paneWidth > 530 ? "hide-1" : ""
+                  }`}
                 >
                   <p>Participants</p>
                 </div>
@@ -132,7 +141,9 @@ function Footer({
                 <div
                   onClick={handleSidebarToggle}
                   data-name="chat"
-                  className={`cursor-pointer ${paneWidth > 750 ? "hide-1" : ""}`}
+                  className={`cursor-pointer ${
+                    paneWidth > 750 ? "hide-1" : ""
+                  }`}
                 >
                   <p>Chat</p>
                 </div>
@@ -151,7 +162,7 @@ function Footer({
         ) : null}
       </div>
       <div className="footer-right-icons">
-        <button className="leave-button">Leave</button>
+        <button className="leave-button" onClick={handleVideoViewRemove}>Leave</button>
       </div>
     </footer>
   );

@@ -13,7 +13,8 @@ function Participants({
   handleClearVideoNameInput,
   videoNameValue,
   setVideoNameValue,
-  toggleVideoView
+  toggleVideoView,
+  handleDateFormat
 }) {
   const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -47,17 +48,12 @@ function Participants({
     }
   }, [searchInput]);
 
-  const handleDateFormat = (date) => {
-    const options = { year: "numeric", month: "long", day: "numeric" };
-    return new Date(date).toLocaleDateString("en-US", options);
-  };
-
   return (
     <div className="participants-sidebar">
       <div className="participants-sidebar-wrapper">
       <Accordion className="rename-accordion">
         <Accordion.Item eventKey="0">
-          <Accordion.Header>Update participant labels</Accordion.Header>
+          <Accordion.Header className="rename-accordion-header"><span>Update participant labels</span></Accordion.Header>
           <Accordion.Body>
             <form className="name-change-form">
               <label>Update my label</label>
