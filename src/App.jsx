@@ -93,7 +93,7 @@ function App() {
   const handleSidebarToggle = (e) => {
     e.preventDefault();
     const elName = e.currentTarget.getAttribute("data-name");
-    // console.log(elName);
+    console.log(elName);
     if (elName === "chat") {
       setSidebarContent("chat");
     } else if (elName === "participants") {
@@ -193,7 +193,7 @@ function App() {
                   </Dropdown.Toggle>
 
                   <Dropdown.Menu className="view-menu-option">
-                    <Dropdown.Item onClick={handleSidebarToggle}>
+                    <Dropdown.Item data-name="participants" onClick={handleSidebarToggle}>
                       Rename
                     </Dropdown.Item>
                     {isVideoVisible ? (

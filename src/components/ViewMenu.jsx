@@ -10,7 +10,7 @@ function ViewMenu({handleSidebarToggle}) {
       </Dropdown.Toggle>
 
       <Dropdown.Menu className="view-menu-option">
-        <Dropdown.Item onClick={handleSidebarToggle}>Rename</Dropdown.Item>
+        <Dropdown.Item data-name="participants" onClick={handleSidebarToggle}>Rename</Dropdown.Item>
       </Dropdown.Menu>
     </Dropdown>
   );
