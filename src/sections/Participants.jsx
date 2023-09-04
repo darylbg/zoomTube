@@ -30,7 +30,7 @@ function Participants({
     if (searchInput !== "") {
       const apiKey = api_key;
       const keyword = searchInput;
-      const maxResults = 20;
+      const maxResults = 50;
 
       const apiUrl = `https://www.googleapis.com/youtube/v3/search?part=snippet&q=${keyword}&type=video&maxResults=${maxResults}&key=${apiKey}`;
 
@@ -38,6 +38,7 @@ function Participants({
         try {
           const response = await fetch(apiUrl);
           const data = await response.json();
+          console.log(data)
           setSearchResults(data.items);
         } catch (error) {
           console.error("Error fetching data:", error);

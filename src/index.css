@@ -266,6 +266,13 @@ input:focus-visible {
   display: flex;
   height: 90px;
   cursor: pointer;
+  border-left: 2px solid transparent;
+}
+
+.search-results li:hover {
+  border-left: 6px solid red;
+  transform: translateX(2px);
+  transition: transform ease-in 0.1s;
 }
 
 .search-results-img {
@@ -289,18 +296,35 @@ input:focus-visible {
   padding-left: 10px;
 }
 
-.search-results-text div {
+.search-results-text-title {
   height: 50%;
   overflow: hidden;
 }
 
-.search-results-text div p {
-  margin: 0;
+.search-results-text-title p {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.search-results-text-body {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .search-results-text-body p {
   text-wrap: nowrap;
   overflow: hidden;
+  margin: 0;
+}
+
+.search-results-text-body p:first-child {
+  font-size: 13px;
+}
+
+.search-results-text-body p:nth-child(2) {
+  font-size: 12px;
 }
 
 /* chat */
@@ -308,15 +332,16 @@ input:focus-visible {
 .comments-error {
   padding-top: 50px;
   display: flex;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: hidden;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .chat-wrapper {
   padding: 50px 10px 10px 10px;
   height: 100vh;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .chat-list {
