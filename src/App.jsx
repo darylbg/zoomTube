@@ -210,7 +210,7 @@ function App() {
                     </Dropdown.Item>
                   </Dropdown.Menu>
                 </Dropdown>
-                {isVideoVisible ? (
+                {isVideoVisible && videoId !== '' ? (
                   <YoutubeEmbedVideo videoId={videoId} suggestions={false} />
                 ) : (
                   <p

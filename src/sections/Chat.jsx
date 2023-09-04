@@ -11,6 +11,7 @@ function Chat({ videoId, handleDateFormat, paneWidth, viewportWidth }) {
   // }
 
   useEffect(() => {
+    if (videoId !== '') {
     async function fetchVideoComments() {
       const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY; // Replace with your API key
       const maxResults = 100; // You can adjust the number of results per page
@@ -41,8 +42,9 @@ function Chat({ videoId, handleDateFormat, paneWidth, viewportWidth }) {
     }
 
     fetchAndSetComments();
+  }
   }, [videoId]);
-  console.log(comments);
+
   if (comments.length === 0) {
     return <p className="comments-error">Video has no comments.</p>;
   } else {

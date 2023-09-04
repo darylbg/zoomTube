@@ -391,6 +391,12 @@ input:focus-visible {
   display: flex;
 }
 
+.carret-icon {
+  position: absolute;
+  right: 0;
+  top: 5px;
+}
+
 .footer-icons div {
   padding: 0 15px;
   margin: 1px 0 3px 0;

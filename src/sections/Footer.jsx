@@ -20,6 +20,8 @@ function CollapsibleItem({
   onClick,
   dataName,
   className,
+  smallIcon,
+  textStyle
 }) {
   return (
     <div
@@ -29,8 +31,9 @@ function CollapsibleItem({
     >
       <div>
         <img src={icon} alt="Icon" />
+        {smallIcon && <img src={smallIcon} alt="Small Icon" className="carret-icon" />}
       </div>
-      <p>{text}</p>
+      <p style={textStyle && textStyle}>{text}</p>
     </div>
   );
 }
@@ -91,6 +94,8 @@ function Footer({
           icon={ShareScreenIcon}
           text="Share Screen"
           className={`${paneWidth < 750 ? "hide-1" : ""}`}
+          smallIcon={CarretGreenIcon}
+          textStyle={{color: '#23D959'}}
         />
         <CollapsibleItem
           icon={ChatIcon}
@@ -98,11 +103,13 @@ function Footer({
           dataName="chat"
           onClick={handleSidebarToggle}
           className={`cursor-pointer ${paneWidth < 750 ? "hide-1" : ""}`}
+          smallIcon={CarretIcon}
         />
         <CollapsibleItem
           icon={WhiteboardsIcon}
           text="Whiteboards"
           className={`${paneWidth < 980 ? "hide-1" : ""}`}
+          smallIcon={CarretIcon}
         />
         <CollapsibleItem
           icon={ReactionsIcon}
