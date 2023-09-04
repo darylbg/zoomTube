@@ -39,23 +39,41 @@ function App() {
   const layoutCSS = {
     minHeight: "100%",
     display: "flex",
-    flexDirection: paneWidth < 800 ? 'column' : 'row',
+    flexDirection: paneWidth < 800 ? "column" : "row",
     justifyContent: "space-between",
-    paddingBottom: '52px',
+    paddingBottom: "52px",
   };
 
-  const smallLayoutCss = {
-    width: '80%'
+  // const smallLayoutCss = {
+  //   width: "80%",
+  // };
+
+  const mediumLayoutCss = {
+    flex: "0.8",
+  };
+
+  const LargeLayoutCSS = {
+    flex: "0.5",
+  };
+
+  let conditionalStyles = {};
+
+  if (paneWidth > 1000 && toggleVideoView === false) {
+    conditionalStyles = LargeLayoutCSS;
+  } else if (paneWidth > 800 && toggleVideoView === false) {
+    conditionalStyles = mediumLayoutCss;
+  } else {
+    conditionalStyles = null;
   }
 
   useEffect(() => {
     const handleViewPadding = () => {
-      if (paneWidth > 1100 && toggleVideoView == true) {
+      if (paneWidth > 900 && toggleVideoView == false) {
         // return padding = paneWidth / 100
       }
-    }
-  handleViewPadding();
-  }, [sizes, viewportWidth])
+    };
+    handleViewPadding();
+  }, [sizes, viewportWidth]);
 
   const handleResize = () => {
     setViewportWidth(window.innerWidth);
@@ -155,9 +173,16 @@ function App() {
         onChange={setSizes}
         className="split-pane-section"
       >
-        <Pane minSize={"50%"} maxSize={"95%"}>
+        <Pane minSize={"20%"} maxSize={"95%"}>
           <div style={{ ...layoutCSS, alignItems: "center" }} ref={elementRef}>
-            <div style={paneWidth < 800 ? smallLayoutCss : null} className={`view-wrapper ${toggleVideoView ? "" : "d-none"}`}>
+            <div
+              style={{
+                width: paneWidth < 800 ? "80%" : null,
+                paddingLeft: paneWidth > 900 ? "5%" : null,
+              }}
+              // style={conditionalStyles}
+              className={`view-wrapper ${toggleVideoView ? "" : "d-none"}`}
+            >
               <div className={`video-view `}>
                 <Dropdown className="view-menu-dropdown">
                   <Dropdown.Toggle variant="primary" id="dropdown-basic">
@@ -185,7 +210,12 @@ function App() {
                 {isVideoVisible ? (
                   <YoutubeEmbedVideo videoId={videoId} suggestions={false} />
                 ) : (
-                  <p className="view-title">{videoName}</p>
+                  <p
+                    className="view-title"
+                    style={{ fontSize: paneWidth < 800 ? "2em" : "5vw" }}
+                  >
+                    {videoName}
+                  </p>
                 )}
                 <div className="view-mute-label">
                   <MicOff />
@@ -193,13 +223,26 @@ function App() {
                 </div>
               </div>
             </div>
-            <div style={paneWidth < 800 ? smallLayoutCss : null} className="view-wrapper">
-              <div className="right-view">
+            <div
+              style={{
+                width: paneWidth < 800 ? "80%" : null,
+                paddingRight:
+                  paneWidth > 900 && toggleVideoView === true ? "5%" : null,
+              }}
+              // style={conditionalStyles}
+              className="view-wrapper"
+            >
+              <div className="right-view" style={conditionalStyles}>
                 <ViewMenu handleSidebarToggle={handleSidebarToggle} />
                 {isWebcamVisible ? (
                   <Webcam style={{ width: "100%" }} />
                 ) : (
-                  <p className="view-title">{myName}</p>
+                  <p
+                    className="view-title"
+                    style={{ fontSize: paneWidth < 800 ? "2em" : "5vw" }}
+                  >
+                    {myName}
+                  </p>
                 )}
                 <div className="view-mute-label">
                   <MicOff />

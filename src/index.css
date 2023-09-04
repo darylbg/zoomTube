@@ -26,17 +26,21 @@ input:focus-visible {
   flex: 1;
   justify-self: center;
   align-items: center;
+  justify-content: center;
+  width: 80%;
 }
 
-/* @media screen and (min-width: ) {
-  
-} */
+@media screen and (min-width: 800px) {
+  .view-wrapper {
+    padding: 0 10px;
+  }
+}
 
 .view-title {
   color: white;
   font-weight: bold;
   text-wrap: nowrap;
-  font-size: 5vw;
+  /* font-size: 5vw; */
   clear: right;
   overflow: hidden;
 }
