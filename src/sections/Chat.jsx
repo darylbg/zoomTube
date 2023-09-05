@@ -4,17 +4,11 @@ import axios from "axios";
 function Chat({ videoId, handleDateFormat, paneWidth, viewportWidth }) {
   const [comments, setComments] = useState([]);
 
-  // const commentStyles = {}
-
-  // if (viewportWidth - paneWidth < 100) {
-  //   commentStyles.overflowX = 'hidden';
-  // }
-
   useEffect(() => {
     if (videoId !== '') {
     async function fetchVideoComments() {
-      const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY; // Replace with your API key
-      const maxResults = 100; // You can adjust the number of results per page
+      const apiKey = process.env.REACT_APP_YOUTUBE_API_KEY; 
+      const maxResults = 100;
 
       try {
         const response = await axios.get(

@@ -65,7 +65,6 @@ function App() {
   useEffect(() => {
     const handleViewPadding = () => {
       if (paneWidth > 900 && toggleVideoView == false) {
-        // return padding = paneWidth / 100
       }
     };
     handleViewPadding();
