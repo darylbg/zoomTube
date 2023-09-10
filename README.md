@@ -33,8 +33,8 @@ This is obviously just a fun app i built quickly dont get mad at me if you are f
 - View when side panel is dragged smaller
 ![Screenshot](./src/assets/images/screenshot%203.png)
 - Side panel on small devices (covers device width)
-![Screenshot](./src/assets/images/screenshot%204.png)
+![Screenshot](./src/assets/images/Screenshot%204.png)
 - Participants side panel with updating of participant titles
-![Screenshot](./src/assets/images/screenshot%205.png)
+![Screenshot](./src/assets/images/Screenshot%205.png)
 - Chat side panel -  browse youtube comments
-![Screenshot](./src/assets/images/screenshot%206.png)
+![Screenshot](./src/assets/images/Screenshot%206.png)
