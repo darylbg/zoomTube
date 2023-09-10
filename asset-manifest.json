@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/zoomTube/static/css/main.5f3cd091.css",
-    "main.js": "/zoomTube/static/js/main.76ac6540.js",
+    "main.js": "/zoomTube/static/js/main.9796ddb3.js",
     "static/media/play-button-icon-png-18919.png": "/zoomTube/static/media/play-button-icon-png-18919.aa085afb60cf6e5da932.png",
     "static/media/whiteboards.svg": "/zoomTube/static/media/whiteboards.f5cef418eed7ec304c707ff147bf64d2.svg",
     "static/media/settings.svg": "/zoomTube/static/media/settings.0203b6a79f5a7bd40e5b4299a97a3977.svg",
@@ -19,10 +19,10 @@
     "static/media/carretGreen.svg": "/zoomTube/static/media/carretGreen.7f81a4e2d108bb7c6a0c6e0b21bb020b.svg",
     "static/media/carret.svg": "/zoomTube/static/media/carret.91d550d2c64c57346909ec3b8cc4a9c9.svg",
     "main.5f3cd091.css.map": "/zoomTube/static/css/main.5f3cd091.css.map",
-    "main.76ac6540.js.map": "/zoomTube/static/js/main.76ac6540.js.map"
+    "main.9796ddb3.js.map": "/zoomTube/static/js/main.9796ddb3.js.map"
   },
   "entrypoints": [
     "static/css/main.5f3cd091.css",
-    "static/js/main.76ac6540.js"
+    "static/js/main.9796ddb3.js"
   ]
 }
