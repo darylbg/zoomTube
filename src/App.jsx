@@ -7,10 +7,11 @@ import Webcam from "react-webcam";
 import YoutubeEmbedVideo from "youtube-embed-video";
 import ViewMenu from "./components/ViewMenu";
 import Dropdown from "react-bootstrap/Dropdown";
+import { X } from "react-bootstrap-icons";
 import {
   MoreHorizontal,
   MicOff,
-  X,
+  // X,
 } from "feather-icons-react/build/IconComponents";
 import "split-pane-react/esm/themes/default.css";
 import "./index.css";
