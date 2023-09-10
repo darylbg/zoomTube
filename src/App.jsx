@@ -103,8 +103,7 @@ function App() {
       setSidebarToggle("75%");
     } else {
       setSidebarToggle("0%");
-    }
-    
+    } 
   };
 
   const handleSidebarToggleOff = (e) => {
@@ -118,6 +117,10 @@ function App() {
     const selectedId = e.currentTarget.getAttribute("data-id");
     setVideoId(selectedId);
     setIsVideoVisible(true);
+
+    if (viewportWidth < 760) {
+      setSidebarToggle("100%");
+    }
   };
 
   const handleVideoViewRemove = (e) => {

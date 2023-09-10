@@ -14,7 +14,7 @@ function Participants({
   videoNameValue,
   setVideoNameValue,
   toggleVideoView,
-  handleDateFormat
+  handleDateFormat,
 }) {
   const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
