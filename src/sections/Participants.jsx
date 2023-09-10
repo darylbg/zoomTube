@@ -38,7 +38,7 @@ function Participants({
         try {
           const response = await fetch(apiUrl);
           const data = await response.json();
-          console.log(data)
+          // console.log(data)
           setSearchResults(data.items);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -59,6 +59,7 @@ function Participants({
             <form className="name-change-form">
               <label>Update my label</label>
               <input
+                maxLength={10}
                 type="text"
                 value={nameValue}
                 onChange={(e) => {
@@ -80,6 +81,7 @@ function Participants({
                   </label>
                   <input
                     type="text"
+                    maxLength={10}
                     value={videoNameValue}
                     onChange={(e) => {
                       setVideoNameValue(e.target.value);

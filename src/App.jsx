@@ -93,7 +93,7 @@ function App() {
   const handleSidebarToggle = (e) => {
     e.preventDefault();
     const elName = e.currentTarget.getAttribute("data-name");
-    console.log(elName);
+    // console.log(elName);
     if (elName === "chat") {
       setSidebarContent("chat");
     } else if (elName === "participants") {
@@ -251,7 +251,7 @@ function App() {
                 ) : (
                   <p
                     className="view-title"
-                    style={{ fontSize: paneWidth < 800 ? "2em" : "5vw" }}
+                    style={{ fontSize: paneWidth < 800 ? "2em" : "4vw" }}
                   >
                     {myName}
                   </p>

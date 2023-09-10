@@ -40,7 +40,7 @@ function Chat({ videoId, handleDateFormat, paneWidth, viewportWidth }) {
   }, [videoId]);
 
   if (comments.length === 0) {
-    return <p className="comments-error">This video has no comments.</p>;
+    return <p className="comments-error">Select a video with comments enabled to view the comments here.</p>;
   } else {
     return (
       <div className="chat-wrapper">

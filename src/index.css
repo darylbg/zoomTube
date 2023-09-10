@@ -28,6 +28,7 @@ input:focus-visible {
   align-items: center;
   justify-content: center;
   width: 80%;
+  overflow: hidden;
 }
 
 @media screen and (min-width: 800px) {
@@ -331,11 +332,9 @@ input:focus-visible {
 /* chat */
 
 .comments-error {
-  padding-top: 50px;
+  padding: 50px 15px;
   display: flex;
   justify-content: center;
-  white-space: nowrap;
-  overflow: hidden;
 }
 
 .chat-wrapper {
