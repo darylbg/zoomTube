@@ -16,7 +16,7 @@ import "split-pane-react/esm/themes/default.css";
 import "./index.css";
 
 function App() {
-  const [sidebarToggle, setSidebarToggle] = useState("75%");
+  const [sidebarToggle, setSidebarToggle] = useState("100%");
   const [sidebarContent, setSidebarContent] = useState("");
   const [sizes, setSizes] = useState([sidebarToggle, "auto"]);
 
@@ -98,7 +98,13 @@ function App() {
     } else if (elName === "participants") {
       setSidebarContent("participants");
     }
-    setSidebarToggle("75%");
+
+    if (viewportWidth > 768) {
+      setSidebarToggle("75%");
+    } else {
+      setSidebarToggle("0%");
+    }
+    
   };
 
   const handleSidebarToggleOff = (e) => {
