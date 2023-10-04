@@ -3,6 +3,9 @@
 ## Description
 ZoomTube is an app to discretely watch Youtube videos on your device while looking like you are on a Zoom call.
 
+- Live project here [https://darylbg.github.io/zoomTube](https://darylbg.github.io/zoomTube)
+- Source code here [https://github.com/darylbg/zoomTube](https://github.com/darylbg/zoomTube)
+
 ## Usage
 If you would like to discretely browse youtube or watch a video while at work but make it seem like you are doing something useful, just open ZoomTube and enjoy your videos in peace while the rest of the office assumes you are on a zoom call.
 
@@ -23,7 +26,7 @@ If you would like to discretely browse youtube or watch a video while at work bu
 - gh-pages
 
 ## Uhhh-um 
-This is obviously just a fun app i built quickly dont get mad at me if you are fired for scheduling 5hr ZoomTube calls in the office all day ok.
+This is obviously just a fun app i built quickly dont get mad at me if you are fired for scheduling 5hr ZoomTube calls to watch videos in the office all day ok : )
 
 ### Images for reference (how it looks)
 - Page on open
