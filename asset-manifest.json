@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/zoomTube/static/css/main.3785f02a.css",
-    "main.js": "/zoomTube/static/js/main.64c7ae1f.js",
+    "main.css": "/zoomTube/static/css/main.c673c1f0.css",
+    "main.js": "/zoomTube/static/js/main.e926bf95.js",
     "static/media/play-button-icon-png-18919.png": "/zoomTube/static/media/play-button-icon-png-18919.aa085afb60cf6e5da932.png",
     "static/media/whiteboards.svg": "/zoomTube/static/media/whiteboards.f5cef418eed7ec304c707ff147bf64d2.svg",
     "static/media/settings.svg": "/zoomTube/static/media/settings.0203b6a79f5a7bd40e5b4299a97a3977.svg",
@@ -18,11 +18,11 @@
     "static/media/more.svg": "/zoomTube/static/media/more.dad0590dab7669324246966b5374dc6d.svg",
     "static/media/carretGreen.svg": "/zoomTube/static/media/carretGreen.7f81a4e2d108bb7c6a0c6e0b21bb020b.svg",
     "static/media/carret.svg": "/zoomTube/static/media/carret.91d550d2c64c57346909ec3b8cc4a9c9.svg",
-    "main.3785f02a.css.map": "/zoomTube/static/css/main.3785f02a.css.map",
-    "main.64c7ae1f.js.map": "/zoomTube/static/js/main.64c7ae1f.js.map"
+    "main.c673c1f0.css.map": "/zoomTube/static/css/main.c673c1f0.css.map",
+    "main.e926bf95.js.map": "/zoomTube/static/js/main.e926bf95.js.map"
   },
   "entrypoints": [
-    "static/css/main.3785f02a.css",
-    "static/js/main.64c7ae1f.js"
+    "static/css/main.c673c1f0.css",
+    "static/js/main.e926bf95.js"
   ]
 }
