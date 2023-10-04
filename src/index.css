@@ -66,6 +66,10 @@ input:focus-visible {
   align-items: center;
 }
 
+.video-view:hover .view-mute-label {
+  display: none;
+}
+
 .video-view iframe {
   height: 100%;
   width: 100%;
@@ -305,7 +309,7 @@ input:focus-visible {
 
 .search-results-text-title p {
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 650;
 }
 
 .search-results-text-body {
@@ -322,11 +326,12 @@ input:focus-visible {
 }
 
 .search-results-text-body p:first-child {
-  font-size: 13px;
+  font-size: 15px;
+  font-weight: 500;
 }
 
 .search-results-text-body p:nth-child(2) {
-  font-size: 12px;
+  font-size: 11px;
 }
 
 /* chat */

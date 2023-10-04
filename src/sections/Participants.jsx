@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { X, Check } from "feather-icons-react/build/IconComponents";
 import PlayButtonImg from "../assets/images/play-button-icon-png-18919.png";
 import { Accordion } from "react-bootstrap";
+import { BorderLeft } from "react-bootstrap-icons";
 
 function Participants({
   handleSelectedVideo,
@@ -15,6 +16,7 @@ function Participants({
   setVideoNameValue,
   toggleVideoView,
   handleDateFormat,
+  videoId
 }) {
   const [searchResults, setSearchResults] = useState([]);
   const [inputValue, setInputValue] = useState("");
@@ -38,7 +40,6 @@ function Participants({
         try {
           const response = await fetch(apiUrl);
           const data = await response.json();
-          // console.log(data)
           setSearchResults(data.items);
         } catch (error) {
           console.error("Error fetching data:", error);
@@ -130,7 +131,7 @@ function Participants({
                 key={result.id.videoId}
                 data-id={result.id.videoId}
                 onClick={handleSelectedVideo}
-              >
+                style={result.id.videoId === videoId ? { borderLeft: "6px solid red" } : {}}              >
                 <div className="search-results-img">
                   <img
                     className="img-1"

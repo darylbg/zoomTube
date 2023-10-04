@@ -118,7 +118,6 @@ function App() {
     const selectedId = e.currentTarget.getAttribute("data-id");
     setVideoId(selectedId);
     setIsVideoVisible(true);
-
     if (viewportWidth < 760) {
       setSidebarToggle("100%");
     }
@@ -308,6 +307,7 @@ function App() {
                 videoNameValue={videoNameValue}
                 toggleVideoView={toggleVideoView}
                 handleDateFormat={handleDateFormat}
+                videoId={videoId}
               />
             )}
           </div>
